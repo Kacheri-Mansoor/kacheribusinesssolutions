@@ -1,209 +1,577 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Kacheri Business Solutions | Anantapur</title>
-<meta name="description" content="Photocopier Rental & Investor Rental Model in Anantapur. Secure asset-backed income opportunity.">
+<meta name="description" content="Modern corporate website for photocopier rentals and an investor rental model in Anantapur. WhatsApp: 8247892087 / 6300896212" />
 
 <style>
+  :root{
+    --bg:#0b1220;
+    --card:#0f1a33;
+    --card2:#0e1730;
+    --text:#e7eaf3;
+    --muted:#b8c0d9;
+    --primary:#2f66ff;
+    --accent:#d4af37;
+    --good:#25D366;
+    --good2:#128C7E;
+    --ring: rgba(47,102,255,.35);
+    --shadow: 0 20px 60px rgba(0,0,0,.35);
+    --shadow2: 0 12px 30px rgba(0,0,0,.25);
+    --radius: 18px;
+    --radius2: 14px;
+    --max: 1150px;
+  }
 
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f4f6f9;
-    color: #222;
-}
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+    color:var(--text);
+    background:
+      radial-gradient(1200px 600px at 15% -10%, rgba(212,175,55,.18), transparent 60%),
+      radial-gradient(1000px 500px at 80% -10%, rgba(47,102,255,.18), transparent 55%),
+      linear-gradient(180deg, #060a14 0%, #0b1220 40%, #070b15 100%);
+  }
 
-header {
-    background: linear-gradient(90deg,#0a1f44,#102a63);
-    color: white;
-    padding: 20px;
-    text-align: center;
-}
+  a{ color:inherit; text-decoration:none; }
+  .container{ max-width:var(--max); margin:0 auto; padding:0 16px; }
 
-nav {
-    background: #081630;
-    text-align: center;
-    padding: 12px;
-}
+  /* Top mini bar */
+  .topbar{
+    border-bottom:1px solid rgba(255,255,255,.08);
+    background: rgba(7,11,21,.55);
+    backdrop-filter: blur(10px);
+  }
+  .topbar .row{
+    display:flex; gap:12px; align-items:center; justify-content:space-between;
+    padding:10px 0; flex-wrap:wrap;
+    font-size:13px;
+    color: rgba(231,234,243,.9);
+  }
+  .pill{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:6px 10px; border-radius:999px;
+    border:1px solid rgba(255,255,255,.10);
+    background: rgba(255,255,255,.06);
+  }
+  .pill b{ color:#fff; }
 
-nav a {
-    color: white;
-    margin: 0 18px;
-    text-decoration: none;
-    font-weight: bold;
-}
+  /* Header */
+  header{
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(7,11,21,.40);
+    backdrop-filter: blur(12px);
+    border-bottom:1px solid rgba(255,255,255,.08);
+  }
+  .hdr{
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+    padding:14px 0;
+  }
+  .brand{
+    display:flex; align-items:center; gap:12px;
+    min-width: 250px;
+  }
+  .logo{
+    width:44px; height:44px; border-radius: 16px;
+    display:grid; place-items:center;
+    background: linear-gradient(135deg, rgba(47,102,255,.95), rgba(16,42,99,.95));
+    box-shadow: var(--shadow2);
+    border:1px solid rgba(255,255,255,.12);
+  }
+  .logo span{
+    font-weight:900; letter-spacing:.5px; color:#fff;
+  }
+  .brand h1{
+    margin:0; font-size:16px; line-height:1.1;
+  }
+  .brand p{
+    margin:0; font-size:12px; color:rgba(231,234,243,.75);
+  }
 
-.hero {
-    background: linear-gradient(rgba(10,31,68,0.85),rgba(10,31,68,0.85)),
-                url('https://images.unsplash.com/photo-1521790360283-1b3b8e42a1b8');
-    background-size: cover;
-    background-position: center;
-    color: white;
-    padding: 100px 20px;
-    text-align: center;
-}
+  nav{
+    display:flex; gap:10px; align-items:center; flex-wrap:wrap;
+    justify-content:flex-end;
+  }
+  nav a.link{
+    padding:10px 12px; border-radius: 12px;
+    color: rgba(231,234,243,.9);
+    border:1px solid transparent;
+  }
+  nav a.link:hover{
+    background: rgba(255,255,255,.06);
+    border-color: rgba(255,255,255,.08);
+  }
 
-.hero h2 {
-    font-size: 38px;
-    margin-bottom: 15px;
-}
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center;
+    padding:12px 16px; border-radius: 14px;
+    font-weight:800;
+    border:1px solid transparent;
+    transition: transform .08s ease, box-shadow .2s ease;
+    user-select:none;
+  }
+  .btn:active{ transform: translateY(1px); }
+  .btn-primary{
+    background: linear-gradient(135deg, var(--primary), #7aa2ff);
+    color:#071021;
+    box-shadow: 0 14px 30px rgba(47,102,255,.25);
+  }
+  .btn-accent{
+    background: linear-gradient(135deg, var(--accent), #f3e2a6);
+    color:#1a1406;
+    box-shadow: 0 14px 30px rgba(212,175,55,.18);
+  }
+  .btn-ghost{
+    background: rgba(255,255,255,.06);
+    border-color: rgba(255,255,255,.10);
+    color:#fff;
+  }
 
-.btn {
-    display: inline-block;
-    padding: 14px 28px;
-    margin-top: 20px;
-    background: #d4af37;
-    color: black;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 6px;
-}
+  /* Hero */
+  .hero{
+    padding: 46px 0 26px;
+  }
+  .heroGrid{
+    display:grid;
+    grid-template-columns: 1.2fr .8fr;
+    gap: 16px;
+    align-items:stretch;
+  }
+  @media (max-width: 900px){
+    .heroGrid{ grid-template-columns: 1fr; }
+    nav{ justify-content:flex-start; }
+  }
+  .heroCard{
+    position:relative;
+    padding: 28px;
+    border-radius: var(--radius);
+    background:
+      radial-gradient(600px 240px at 20% 0%, rgba(212,175,55,.22), transparent 60%),
+      radial-gradient(600px 240px at 80% 0%, rgba(47,102,255,.22), transparent 60%),
+      linear-gradient(180deg, rgba(15,26,51,.92), rgba(14,23,48,.92));
+    border:1px solid rgba(255,255,255,.10);
+    box-shadow: var(--shadow);
+    overflow:hidden;
+  }
+  .heroCard h2{
+    margin:0 0 10px;
+    font-size: 36px;
+    line-height: 1.12;
+    letter-spacing: -.3px;
+  }
+  .heroCard p{
+    margin:0 0 18px;
+    color: rgba(231,234,243,.82);
+    font-size: 16px;
+  }
+  .heroActions{
+    display:flex; gap:10px; flex-wrap:wrap;
+  }
+  .badges{
+    display:flex; gap:10px; flex-wrap:wrap;
+    margin-top: 14px;
+  }
+  .badge{
+    padding:8px 10px;
+    border-radius: 999px;
+    background: rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.10);
+    color: rgba(231,234,243,.92);
+    font-weight: 700;
+    font-size: 13px;
+  }
 
-.section {
-    padding: 60px 20px;
-    text-align: center;
-}
+  .sideCard{
+    padding: 22px;
+    border-radius: var(--radius);
+    background: linear-gradient(180deg, rgba(15,26,51,.92), rgba(14,23,48,.92));
+    border:1px solid rgba(255,255,255,.10);
+    box-shadow: var(--shadow2);
+  }
+  .sideCard h3{ margin:0 0 8px; }
+  .note{ color: rgba(231,234,243,.70); font-size: 13px; }
 
-.section h2 {
-    color: #0a1f44;
-    margin-bottom: 30px;
-}
+  .kpis{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 12px;
+  }
+  .kpi{
+    padding: 14px;
+    border-radius: 16px;
+    background: rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.10);
+  }
+  .kpi b{ display:block; font-size: 18px; }
+  .kpi small{ color: rgba(231,234,243,.70); }
 
-.cards {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 25px;
-}
+  /* Sections */
+  section{
+    padding: 26px 0;
+  }
+  .sectionHead{
+    display:flex; justify-content:space-between; align-items:flex-end; gap:12px;
+    flex-wrap:wrap;
+    margin-bottom: 12px;
+  }
+  .sectionHead h2{ margin:0; font-size: 24px; }
+  .sectionHead p{ margin:0; color: rgba(231,234,243,.72); }
 
-.card {
-    background: white;
-    padding: 30px;
-    width: 280px;
-    border-radius: 10px;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-}
+  .grid3{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+  @media (max-width: 900px){
+    .grid3{ grid-template-columns: 1fr; }
+  }
+  .card{
+    padding: 18px;
+    border-radius: var(--radius);
+    background: rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.10);
+    box-shadow: var(--shadow2);
+  }
+  .card h3{ margin:0 0 6px; }
+  .card p{ margin:0; color: rgba(231,234,243,.72); }
 
-.investor {
-    background: #102a63;
-    color: white;
-    padding: 70px 20px;
-    text-align: center;
-}
+  .split{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  @media (max-width: 900px){
+    .split{ grid-template-columns: 1fr; }
+  }
+  .list{ display:grid; gap:10px; margin-top:10px; }
+  .li{
+    display:flex; gap:10px; align-items:flex-start;
+    padding: 12px 12px;
+    border-radius: 16px;
+    background: rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.10);
+  }
+  .tick{
+    width:22px;height:22px;border-radius:8px;
+    background: rgba(47,102,255,.20);
+    border:1px solid rgba(47,102,255,.35);
+    display:grid;place-items:center;
+    margin-top:2px;
+    font-weight:900;
+  }
 
-.calculator input {
-    padding: 10px;
-    width: 80px;
-    text-align: center;
+  /* Investor */
+  .investorWrap{
+    padding: 22px;
+    border-radius: var(--radius);
+    background:
+      radial-gradient(700px 260px at 20% 0%, rgba(212,175,55,.18), transparent 60%),
+      radial-gradient(700px 260px at 80% 0%, rgba(47,102,255,.18), transparent 60%),
+      linear-gradient(180deg, rgba(15,26,51,.92), rgba(14,23,48,.92));
+    border:1px solid rgba(255,255,255,.10);
+    box-shadow: var(--shadow);
+  }
+  .calcRow{
+    display:flex; gap:10px; flex-wrap:wrap; align-items:center;
     margin-top: 10px;
-}
+  }
+  input{
+    padding: 12px 12px;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,.12);
+    background: rgba(255,255,255,.06);
+    color: var(--text);
+    outline: none;
+    box-shadow: 0 0 0 0 rgba(47,102,255,0);
+  }
+  input:focus{ box-shadow: 0 0 0 4px var(--ring); }
+  .resultBox{
+    margin-top: 12px;
+    padding: 14px;
+    border-radius: 16px;
+    background: rgba(37,211,102,.10);
+    border: 1px solid rgba(37,211,102,.25);
+    color: rgba(231,234,243,.92);
+    font-weight: 800;
+  }
 
-.footer {
-    background: #0a1f44;
-    color: white;
-    padding: 30px;
-    text-align: center;
-}
+  /* Contact */
+  iframe{
+    width:100%;
+    height: 320px;
+    border:0;
+    border-radius: var(--radius);
+    margin-top: 10px;
+    box-shadow: var(--shadow2);
+  }
 
-.whatsapp {
+  /* Footer */
+  footer{
+    margin-top: 22px;
+    border-top:1px solid rgba(255,255,255,.08);
+    background: rgba(7,11,21,.55);
+    backdrop-filter: blur(10px);
+    padding: 22px 0;
+    color: rgba(231,234,243,.80);
+  }
+  .footerRow{
+    display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
+    font-size: 13px;
+  }
+
+  /* Floating WhatsApp */
+  .wFloat{
     position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #25D366;
-    color: white;
-    padding: 15px;
-    border-radius: 50%;
-    text-decoration: none;
-    font-size: 20px;
-}
-
+    right: 16px;
+    bottom: 16px;
+    display:grid;
+    gap:10px;
+    z-index: 90;
+  }
+  .wbtn{
+    display:flex; align-items:center; gap:10px;
+    padding: 12px 14px;
+    border-radius: 999px;
+    font-weight: 900;
+    color:#fff;
+    box-shadow: var(--shadow);
+  }
+  .wbtn.rental{ background: var(--good); }
+  .wbtn.investor{ background: var(--good2); }
+  .wbtn small{ font-weight: 700; opacity:.95; }
 </style>
 
 <script>
-function calculate() {
-    var machines = document.getElementById("machines").value;
-    var monthly = machines * 12000;
-    document.getElementById("result").innerHTML =
-        "Estimated Monthly Income: ₹" + monthly.toLocaleString();
-}
-</script>
+  function calc(){
+    const machines = Number(document.getElementById("machines").value || 1);
+    const monthly = machines * 12000;
+    const principal = machines * 150000;
+    const total5y = monthly * 60;
 
+    document.getElementById("monthly").innerText = "₹" + monthly.toLocaleString("en-IN");
+    document.getElementById("principal").innerText = "₹" + principal.toLocaleString("en-IN");
+    document.getElementById("total5y").innerText = "₹" + total5y.toLocaleString("en-IN");
+  }
+  window.addEventListener("DOMContentLoaded", calc);
+</script>
 </head>
 
 <body>
 
+<div class="topbar">
+  <div class="container row">
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <span class="pill"><b>📍</b> Anantapur</span>
+      <span class="pill"><b>📞</b> +91 8247892087</span>
+      <span class="pill"><b>📞</b> +91 6300896212</span>
+    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <span class="pill"><b>✉</b> info@kacheribusinesssolutions.com</span>
+    </div>
+  </div>
+</div>
+
 <header>
-<h1>Kacheri Business Solutions</h1>
-<p>Anantapur | Corporate & Rental Solutions</p>
+  <div class="container hdr">
+    <div class="brand">
+      <div class="logo"><span>KBS</span></div>
+      <div>
+        <h1>Kacheri Business Solutions</h1>
+        <p>Photocopier Rentals • Corporate Support • Investor Model</p>
+      </div>
+    </div>
+
+    <nav>
+      <a class="link" href="#services">Services</a>
+      <a class="link" href="#investor">Investor Plan</a>
+      <a class="link" href="#why">Why Us</a>
+      <a class="link" href="#contact">Contact</a>
+      <a class="btn btn-accent" href="https://wa.me/918247892087" target="_blank" rel="noopener">WhatsApp Rental</a>
+    </nav>
+  </div>
 </header>
 
-<nav>
-<a href="#services">Services</a>
-<a href="#investor">Investor Plan</a>
-<a href="#contact">Contact</a>
-</nav>
+<main class="container hero">
+  <div class="heroGrid">
+    <section class="heroCard">
+      <h2>Modern Corporate Rentals & Investor Opportunities</h2>
+      <p>
+        We deliver reliable photocopier rental solutions for businesses and institutions in Anantapur.
+        We also provide an asset-backed investor rental model with predictable monthly returns (as per agreement).
+      </p>
+      <div class="heroActions">
+        <a class="btn btn-primary" href="#services">Explore Services</a>
+        <a class="btn btn-ghost" href="https://wa.me/916300896212" target="_blank" rel="noopener">Investor WhatsApp</a>
+      </div>
+      <div class="badges">
+        <span class="badge">On-site Installation</span>
+        <span class="badge">Service Support</span>
+        <span class="badge">Corporate Friendly</span>
+      </div>
+    </section>
 
-<div class="hero">
-<h2>Premium Photocopier Rentals & Secure Investor Model</h2>
-<p>Professional solutions for businesses & predictable income opportunities.</p>
-<a class="btn" href="https://wa.me/918247892087">Get Rental Quote</a>
+    <aside class="sideCard">
+      <h3>Quick Highlights</h3>
+      <p class="note">Professional setup • Trusted service • Fast response</p>
+      <div class="kpis">
+        <div class="kpi"><b>₹12,000</b><small>Monthly return (per machine)*</small></div>
+        <div class="kpi"><b>₹1,50,000</b><small>Principal (per machine)*</small></div>
+        <div class="kpi"><b>5 Years</b><small>Duration*</small></div>
+        <div class="kpi"><b>Anantapur</b><small>Based locally</small></div>
+      </div>
+      <p class="note" style="margin-top:10px">*Final terms depend on agreement.</p>
+      <a class="btn btn-accent" style="margin-top:10px" href="#investor">See Investor Plan</a>
+    </aside>
+  </div>
+
+  <section id="services">
+    <div class="sectionHead">
+      <div>
+        <h2>Core Services</h2>
+        <p>Clean, dependable services designed for corporate requirements.</p>
+      </div>
+    </div>
+
+    <div class="grid3">
+      <div class="card">
+        <h3>Photocopier Rentals</h3>
+        <p>Monthly rental machines installed at offices and institutions with service support.</p>
+      </div>
+      <div class="card">
+        <h3>Corporate Document Support</h3>
+        <p>Printing and document workflow support to keep your operations smooth.</p>
+      </div>
+      <div class="card">
+        <h3>Service & Reliability</h3>
+        <p>Quick response and responsible handling for uninterrupted work.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="investor">
+    <div class="sectionHead">
+      <div>
+        <h2>Investor Rental Model</h2>
+        <p>Estimate returns instantly. (All figures are indicative; final terms depend on agreement.)</p>
+      </div>
+      <a class="btn btn-ghost" href="https://wa.me/916300896212" target="_blank" rel="noopener">Talk to Investor Team</a>
+    </div>
+
+    <div class="investorWrap">
+      <div class="split">
+        <div class="card" style="background:rgba(255,255,255,.04)">
+          <h3>Plan Summary</h3>
+          <div class="list">
+            <div class="li"><div class="tick">✓</div><div><b>Machine Cost:</b> <span class="note">₹1,50,000 per machine</span></div></div>
+            <div class="li"><div class="tick">✓</div><div><b>Monthly Income:</b> <span class="note">₹12,000 per machine</span></div></div>
+            <div class="li"><div class="tick">✓</div><div><b>Duration:</b> <span class="note">5 years (60 months)</span></div></div>
+            <div class="li"><div class="tick">✓</div><div><b>Capital Return:</b> <span class="note">Principal returned at end (as per agreement)</span></div></div>
+          </div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px">
+            <a class="btn btn-accent" href="https://wa.me/916300896212" target="_blank" rel="noopener">Investor WhatsApp</a>
+            <a class="btn btn-ghost" href="https://wa.me/918247892087" target="_blank" rel="noopener">Rental WhatsApp</a>
+          </div>
+          <p class="note" style="margin-top:10px">*This is a business model description. Please share complete terms in agreement with investors.</p>
+        </div>
+
+        <div class="card" style="background:rgba(255,255,255,.04)">
+          <h3>Calculator (Estimate)</h3>
+          <p class="note">Choose number of machines:</p>
+          <div class="calcRow">
+            <input id="machines" type="number" min="1" value="1" oninput="calc()" />
+            <span class="note">machines</span>
+          </div>
+
+          <div class="resultBox">
+            Monthly Income: <span id="monthly">₹12,000</span><br/>
+            Principal: <span id="principal">₹1,50,000</span><br/>
+            5-Year Payout (Estimate): <span id="total5y">₹7,20,000</span>
+          </div>
+          <p class="note" style="margin-top:10px">Calculation: ₹12,000 × machines × 60 months.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="why">
+    <div class="sectionHead">
+      <div>
+        <h2>Why Choose Us</h2>
+        <p>Professional standards + local presence = better service and faster coordination.</p>
+      </div>
+    </div>
+
+    <div class="split">
+      <div class="card">
+        <h3>What you get</h3>
+        <div class="list">
+          <div class="li"><div class="tick">✓</div><div><b>Corporate-ready support</b><div class="note">Clear communication, proper updates and service.</div></div></div>
+          <div class="li"><div class="tick">✓</div><div><b>Transparent process</b><div class="note">Simple steps and clear rental/investor discussion.</div></div></div>
+          <div class="li"><div class="tick">✓</div><div><b>Fast response in Anantapur</b><div class="note">Local operations to coordinate quickly.</div></div></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Quick CTA</h3>
+        <p class="note">For fastest response, message us on WhatsApp.</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px">
+          <a class="btn btn-accent" href="https://wa.me/918247892087" target="_blank" rel="noopener">Rental WhatsApp</a>
+          <a class="btn btn-primary" href="https://wa.me/916300896212" target="_blank" rel="noopener">Investor WhatsApp</a>
+        </div>
+        <p class="note" style="margin-top:10px">Email: info@kacheribusinesssolutions.com</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="sectionHead">
+      <div>
+        <h2>Contact</h2>
+        <p>We’re ready to support corporates and investors in Anantapur.</p>
+      </div>
+    </div>
+
+    <div class="split">
+      <div class="card">
+        <h3>Direct Details</h3>
+        <p><b>WhatsApp (Rental):</b> <a href="https://wa.me/918247892087" target="_blank" rel="noopener">+91 8247892087</a></p>
+        <p><b>WhatsApp (Investor):</b> <a href="https://wa.me/916300896212" target="_blank" rel="noopener">+91 6300896212</a></p>
+        <p><b>Email:</b> <a href="mailto:info@kacheribusinesssolutions.com">info@kacheribusinesssolutions.com</a></p>
+        <p><b>City:</b> Anantapur</p>
+        <p class="note">If you want, we can add your exact office address later.</p>
+      </div>
+
+      <div class="card">
+        <h3>Map</h3>
+        <p class="note">Anantapur (for directions)</p>
+        <iframe loading="lazy" src="https://www.google.com/maps?q=Anantapur&output=embed"></iframe>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footerRow">
+    <div>© 2026 Kacheri Business Solutions • Anantapur</div>
+    <div>WhatsApp: 8247892087 / 6300896212 • Email: info@kacheribusinesssolutions.com</div>
+  </div>
+</footer>
+
+<div class="wFloat">
+  <a class="wbtn rental" href="https://wa.me/918247892087" target="_blank" rel="noopener">
+    WhatsApp <small>Rental</small>
+  </a>
+  <a class="wbtn investor" href="https://wa.me/916300896212" target="_blank" rel="noopener">
+    WhatsApp <small>Investor</small>
+  </a>
 </div>
-
-<div class="section" id="services">
-<h2>Our Core Services</h2>
-<div class="cards">
-<div class="card">
-<h3>Photocopier Rentals</h3>
-<p>Affordable monthly rental machines installed at corporate locations.</p>
-</div>
-
-<div class="card">
-<h3>Corporate Printing</h3>
-<p>Reliable printing & document support for offices and institutions.</p>
-</div>
-
-<div class="card">
-<h3>Business Support</h3>
-<p>Professional service with quick response and reliability.</p>
-</div>
-</div>
-</div>
-
-<div class="investor" id="investor">
-<h2>Investor Rental Model</h2>
-<p>Invest ₹1,50,000 per machine and earn ₹12,000 per month for 5 years.</p>
-
-<div class="calculator">
-<p>Number of Machines:</p>
-<input type="number" id="machines" value="1" min="1" onchange="calculate()">
-<p id="result">Estimated Monthly Income: ₹12,000</p>
-</div>
-
-<a class="btn" href="https://wa.me/916300896212">Become an Investor</a>
-</div>
-
-<div class="section" id="contact">
-<h2>Contact Us</h2>
-<p><b>WhatsApp (Rental):</b> +91 8247892087</p>
-<p><b>WhatsApp (Investor):</b> +91 6300896212</p>
-<p><b>Email:</b> info@kacheribusinesssolutions.com</p>
-<p><b>Location:</b> Anantapur</p>
-
-<iframe
-width="100%" height="300"
-style="border:0; border-radius:10px;"
-loading="lazy"
-src="https://www.google.com/maps?q=Anantapur&output=embed">
-</iframe>
-</div>
-
-<div class="footer">
-<p>© 2026 Kacheri Business Solutions</p>
-</div>
-
-<a class="whatsapp" href="https://wa.me/918247892087">W</a>
 
 </body>
 </html>
