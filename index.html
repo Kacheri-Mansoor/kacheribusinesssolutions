@@ -352,7 +352,7 @@
   function calc(){
     const machines = Number(document.getElementById("machines").value || 1);
     const monthly = machines * 12000;
-    const principal = machines * 150000;
+    const principal = machines * 144000;
     const total5y = monthly * 60;
 
     document.getElementById("monthly").innerText = "₹" + monthly.toLocaleString("en-IN");
@@ -469,7 +469,7 @@
         <div class="card" style="background:rgba(255,255,255,.04)">
           <h3>Plan Summary</h3>
           <div class="list">
-            <div class="li"><div class="tick">✓</div><div><b>Machine Cost:</b> <span class="note">₹1,50,000 per machine</span></div></div>
+            <div class="li"><div class="tick">✓</div><div><b>Machine Cost:</b> <span class="note">₹1,44,000 per machine</span></div></div>
             <div class="li"><div class="tick">✓</div><div><b>Monthly Income:</b> <span class="note">₹12,000 per machine</span></div></div>
             <div class="li"><div class="tick">✓</div><div><b>Duration:</b> <span class="note">5 years (60 months)</span></div></div>
             <div class="li"><div class="tick">✓</div><div><b>Capital Return:</b> <span class="note">Principal returned at end (as per agreement)</span></div></div>
@@ -491,7 +491,7 @@
 
           <div class="resultBox">
             Monthly Income: <span id="monthly">₹12,000</span><br/>
-            Principal: <span id="principal">₹1,50,000</span><br/>
+            Principal: <span id="principal">₹1,44,000</span><br/>
             5-Year Payout (Estimate): <span id="total5y">₹7,20,000</span>
           </div>
           <p class="note" style="margin-top:10px">Calculation: ₹12,000 × machines × 60 months.</p>
@@ -565,10 +565,10 @@
 </footer>
 
 <div class="wFloat">
-  <a class="wbtn rental" href="https://wa.me/918247892087" target="_blank" rel="noopener">
+  <a class="wbtn connect" href="https://wa.me/918247892087" target="_blank" rel="noopener">
     WhatsApp <small>Rental</small>
   </a>
-  <a class="wbtn investor" href="https://wa.me/916300896212" target="_blank" rel="noopener">
+  <a class="wbtn connect" href="https://wa.me/916300896212" target="_blank" rel="noopener">
     WhatsApp <small>Investor</small>
   </a>
 </div>
