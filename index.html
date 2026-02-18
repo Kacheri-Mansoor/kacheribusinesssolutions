@@ -8,10 +8,10 @@
 
   <style>
     :root{
-      --bg:#070707;
+      --bg:#050505;
       --panel:#0f0f0f;
       --panel2:#121212;
-      --text:#f2f2f2;
+      --text:#f4f4f4;
       --muted:#b9b9b9;
       --gold:#d4af37;
       --gold2:#b8962e;
@@ -19,47 +19,43 @@
       --shadow:0 20px 70px rgba(0,0,0,.55);
       --r:18px;
     }
-
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
-      background:
-        radial-gradient(900px 500px at 20% 10%, rgba(212,175,55,.16), transparent 60%),
-        radial-gradient(700px 450px at 85% 15%, rgba(212,175,55,.10), transparent 55%),
-        radial-gradient(900px 550px at 40% 90%, rgba(212,175,55,.10), transparent 60%),
-        var(--bg);
+      background: var(--bg);
       color:var(--text);
       overflow-x:hidden;
     }
     a{color:inherit}
-    .wrap{max-width:1150px; margin:0 auto; padding:0 18px}
+    .wrap{max-width:1180px; margin:0 auto; padding:0 18px}
 
     /* NAV */
     .nav{
       position:sticky; top:0; z-index:50;
-      backdrop-filter: blur(10px);
-      background: rgba(7,7,7,.58);
+      backdrop-filter: blur(12px);
+      background: rgba(5,5,5,.60);
       border-bottom:1px solid rgba(255,255,255,.06);
     }
     .navin{display:flex; align-items:center; justify-content:space-between; padding:14px 0;}
     .brand{display:flex; align-items:center; gap:12px; text-decoration:none}
     .brand img{width:44px; height:44px; object-fit:contain}
-    .brand .t1{font-weight:800; letter-spacing:.4px}
-    .brand .t2{font-size:12px; color:var(--muted); margin-top:2px}
     .brandtext{display:flex; flex-direction:column; line-height:1.1}
+    .brandtext .t1{font-weight:900; letter-spacing:.4px}
+    .brandtext .t2{font-size:12px; color:var(--muted); margin-top:2px}
     .links{display:flex; gap:18px; align-items:center}
     .links a{
       text-decoration:none; font-size:14px; color:var(--muted);
       padding:8px 10px; border-radius:10px;
       transition:.2s ease;
+      white-space:nowrap;
     }
     .links a:hover{color:var(--text); background:rgba(255,255,255,.06)}
     .cta{
       display:inline-flex; align-items:center; gap:10px;
       background: linear-gradient(135deg, var(--gold), var(--gold2));
-      color:#000; font-weight:800; text-decoration:none;
+      color:#000; font-weight:900; text-decoration:none;
       padding:10px 14px; border-radius:12px;
       box-shadow: 0 12px 30px rgba(212,175,55,.15);
       border:1px solid rgba(212,175,55,.35);
@@ -69,7 +65,7 @@
     }
     .cta:hover{transform: translateY(-1px); filter:brightness(1.03)}
     .menuBtn{display:none}
-    @media (max-width: 860px){
+    @media (max-width: 900px){
       .links{display:none}
       .menuBtn{
         display:inline-flex; align-items:center; gap:10px;
@@ -78,10 +74,7 @@
         background: rgba(255,255,255,.04);
         color:var(--text); cursor:pointer;
       }
-      .mobile{
-        display:none;
-        padding: 0 0 14px 0;
-      }
+      .mobile{display:none; padding: 0 0 14px 0;}
       .mobile a{
         display:block; text-decoration:none;
         padding:12px 10px; border-radius:12px;
@@ -91,62 +84,93 @@
       .mobile .cta{width:100%; justify-content:center; margin-top:10px}
     }
 
-    /* HERO */
-    .hero{padding:56px 0 24px}
+    /* HERO (₹1 Crore look) */
+    .heroShell{
+      position:relative;
+      min-height: 78vh;
+      display:flex;
+      align-items:stretch;
+      overflow:hidden;
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .heroVideo{
+      position:absolute; inset:0;
+      width:100%; height:100%;
+      object-fit:cover;
+      filter: contrast(1.05) saturate(1.05) brightness(.75);
+      transform: scale(1.03);
+    }
+    .heroOverlay{
+      position:absolute; inset:0;
+      background:
+        radial-gradient(1200px 550px at 18% 20%, rgba(212,175,55,.30), transparent 55%),
+        radial-gradient(900px 600px at 80% 35%, rgba(212,175,55,.14), transparent 60%),
+        linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.92));
+    }
+    .heroNoise{
+      position:absolute; inset:0;
+      opacity:.09;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E");
+      mix-blend-mode: overlay;
+      pointer-events:none;
+    }
+    .heroContent{
+      position:relative;
+      width:100%;
+      padding: 54px 0 34px;
+    }
     .heroGrid{
       display:grid;
       grid-template-columns: 1.05fr .95fr;
-      gap:20px;
+      gap:18px;
       align-items:stretch;
     }
-    @media (max-width: 980px){ .heroGrid{grid-template-columns:1fr} }
+    @media (max-width: 980px){ .heroShell{min-height:auto} .heroGrid{grid-template-columns:1fr} }
 
-    .heroCard{
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)),
-        radial-gradient(900px 400px at 30% 20%, rgba(212,175,55,.18), transparent 55%),
-        var(--panel);
-      border:1px solid rgba(255,255,255,.07);
-      border-radius: calc(var(--r) + 6px);
+    .glass{
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: calc(var(--r) + 10px);
       box-shadow: var(--shadow);
-      padding:28px;
-      overflow:hidden;
+      padding:26px;
       position:relative;
+      overflow:hidden;
     }
-    .heroCard:before{
+    .glass:before{
       content:"";
       position:absolute; inset:-2px;
-      background: linear-gradient(135deg, rgba(212,175,55,.25), transparent 35%, rgba(212,175,55,.15));
-      opacity:.35;
+      background: linear-gradient(135deg, rgba(212,175,55,.22), transparent 38%, rgba(212,175,55,.12));
+      opacity:.40;
       pointer-events:none;
     }
     .tag{
       display:inline-flex; align-items:center; gap:10px;
       padding:8px 12px;
       border-radius:999px;
-      border:1px solid rgba(212,175,55,.28);
-      background: rgba(212,175,55,.08);
+      border:1px solid rgba(212,175,55,.32);
+      background: rgba(212,175,55,.10);
       color: var(--gold);
-      font-weight:700;
+      font-weight:900;
       font-size:12px;
       position:relative;
       z-index:1;
+      letter-spacing:.2px;
     }
     .hTitle{
       margin:14px 0 10px;
-      font-size:44px;
-      letter-spacing:-.8px;
-      line-height:1.05;
+      font-size:48px;
+      letter-spacing:-1px;
+      line-height:1.03;
       position:relative;
       z-index:1;
     }
     .hTitle .gold{color:var(--gold)}
     .hSub{
       margin:0;
-      color:var(--muted);
+      color:rgba(255,255,255,.78);
       font-size:16px;
-      line-height:1.7;
-      max-width:62ch;
+      line-height:1.75;
+      max-width:64ch;
       position:relative;
       z-index:1;
     }
@@ -154,11 +178,11 @@
     .btn2{
       display:inline-flex; align-items:center; gap:10px;
       padding:10px 14px; border-radius:12px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.18);
+      background: rgba(0,0,0,.25);
       color:var(--text); text-decoration:none;
       transition:.2s ease;
-      font-weight:700;
+      font-weight:800;
       font-size:14px;
     }
     .btn2:hover{background: rgba(255,255,255,.08); transform: translateY(-1px)}
@@ -170,52 +194,63 @@
       margin-top:18px;
       position:relative; z-index:1;
     }
+    @media (max-width: 520px){ .stats{grid-template-columns:1fr} }
     .stat{
-      background: rgba(0,0,0,.22);
-      border:1px solid rgba(255,255,255,.07);
+      background: rgba(0,0,0,.28);
+      border:1px solid rgba(255,255,255,.10);
       border-radius:14px;
       padding:14px;
     }
-    .stat .v{font-size:22px; font-weight:900; color:var(--gold)}
-    .stat .l{font-size:12px; color:var(--muted); margin-top:4px; line-height:1.4}
+    .stat .v{font-size:22px; font-weight:1000; color:var(--gold)}
+    .stat .l{font-size:12px; color:rgba(255,255,255,.72); margin-top:4px; line-height:1.4}
 
-    /* RIGHT CARD (calculator) */
+    /* Calculator */
     .calc{
-      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)), var(--panel2);
-      border:1px solid rgba(255,255,255,.07);
-      border-radius: calc(var(--r) + 6px);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: calc(var(--r) + 10px);
       box-shadow: var(--shadow);
       padding:22px;
+      position:relative;
+      overflow:hidden;
     }
-    .calc h3{margin:2px 0 10px; font-size:18px}
-    .calc p{margin:0 0 14px; color:var(--muted); font-size:13px; line-height:1.6}
-    .row{display:grid; grid-template-columns: 1fr 1fr; gap:12px}
+    .calc:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background: radial-gradient(700px 300px at 60% 10%, rgba(212,175,55,.22), transparent 60%);
+      opacity:.35;
+      pointer-events:none;
+    }
+    .calc h3{margin:2px 0 10px; font-size:18px; position:relative; z-index:1}
+    .calc p{margin:0 0 14px; color:rgba(255,255,255,.72); font-size:13px; line-height:1.6; position:relative; z-index:1}
+    .row{display:grid; grid-template-columns: 1fr 1fr; gap:12px; position:relative; z-index:1}
     @media (max-width: 520px){ .row{grid-template-columns:1fr} }
-    label{display:block; font-size:12px; color:var(--muted); margin:0 0 6px}
+    label{display:block; font-size:12px; color:rgba(255,255,255,.70); margin:0 0 6px}
     input{
       width:100%;
       padding:12px 12px;
       border-radius:12px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.25);
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.28);
       color:var(--text);
       outline:none;
     }
-    input:focus{border-color: rgba(212,175,55,.40); box-shadow: 0 0 0 4px rgba(212,175,55,.10)}
+    input:focus{border-color: rgba(212,175,55,.50); box-shadow: 0 0 0 4px rgba(212,175,55,.12)}
     .result{
       margin-top:14px;
       padding:14px;
       border-radius:14px;
-      border:1px solid rgba(212,175,55,.22);
-      background: rgba(212,175,55,.07);
+      border:1px solid rgba(212,175,55,.24);
+      background: rgba(212,175,55,.09);
+      position:relative; z-index:1;
     }
-    .result .big{font-size:22px; font-weight:900; color:var(--gold)}
-    .result .small{font-size:12px; color:var(--muted); margin-top:6px; line-height:1.5}
+    .result .big{font-size:22px; font-weight:1000; color:var(--gold)}
+    .result .small{font-size:12px; color:rgba(255,255,255,.72); margin-top:6px; line-height:1.5}
 
-    /* SECTIONS */
-    .section{padding:34px 0}
-    .sTitle{font-size:26px; margin:0 0 10px}
-    .sSub{margin:0 0 16px; color:var(--muted); line-height:1.7}
+    /* Sections */
+    .section{padding:44px 0}
+    .sTitle{font-size:28px; margin:0 0 10px}
+    .sSub{margin:0 0 16px; color:var(--muted); line-height:1.75}
     .cards{
       display:grid; grid-template-columns: repeat(3, minmax(0,1fr));
       gap:14px;
@@ -245,9 +280,9 @@
     @media (max-width: 820px){ .planGrid{grid-template-columns:1fr} }
     .kv{padding:12px; border-radius:14px; border:1px solid rgba(255,255,255,.08); background: rgba(0,0,0,.20)}
     .kv .k{font-size:12px; color:var(--muted)}
-    .kv .v{font-size:20px; font-weight:900; color:var(--gold); margin-top:6px}
+    .kv .v{font-size:20px; font-weight:1000; color:var(--gold); margin-top:6px}
 
-    /* TEAM */
+    /* Team */
     .team{
       display:grid; grid-template-columns: repeat(2, minmax(0,1fr));
       gap:14px;
@@ -267,28 +302,92 @@
       box-shadow: 0 10px 30px rgba(0,0,0,.45);
       background:#000;
     }
-    .person .role{color:var(--gold); font-weight:900}
+    .person .role{color:var(--gold); font-weight:1000}
     .person .name{margin-top:4px; font-size:14px; color:var(--muted)}
     .person .desc{margin-top:8px; font-size:13px; color:var(--muted); line-height:1.6}
 
-    /* GALLERY */
+    /* Gallery (REAL IMAGES) */
     .gallery{
-      display:grid; grid-template-columns: repeat(4, minmax(0,1fr));
+      display:grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
       gap:12px;
     }
     @media (max-width: 980px){ .gallery{grid-template-columns: repeat(2, minmax(0,1fr));} }
-    .g{
+
+    .photo{
+      position:relative;
+      overflow:hidden;
       border-radius: var(--r);
-      border:1px dashed rgba(212,175,55,.25);
+      border:1px solid rgba(255,255,255,.08);
       background: rgba(255,255,255,.03);
-      height:140px;
-      display:flex; align-items:center; justify-content:center;
-      color: rgba(212,175,55,.65);
-      font-weight:800;
-      letter-spacing:.2px;
+      aspect-ratio: 4 / 3;
+      box-shadow: 0 18px 50px rgba(0,0,0,.42);
+      cursor:pointer;
+    }
+    .photo img{
+      width:100%; height:100%;
+      object-fit:cover;
+      transform: scale(1.02);
+      transition: transform .35s ease, filter .35s ease;
+      filter: saturate(1.05) contrast(1.02);
+      display:block;
+    }
+    .photo:hover img{ transform: scale(1.08); filter: saturate(1.15) contrast(1.06); }
+    .photo:after{
+      content:"";
+      position:absolute; inset:0;
+      background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,.78));
+      opacity:.9;
+      pointer-events:none;
+    }
+    .cap{
+      position:absolute; left:12px; right:12px; bottom:12px;
+      font-weight:900;
+      font-size:13px;
+      color:rgba(255,255,255,.92);
+      display:flex; justify-content:space-between; align-items:center;
+      gap:10px;
+      z-index:2;
+    }
+    .cap span{
+      color:rgba(212,175,55,.95);
+      font-size:12px;
+      font-weight:1000;
     }
 
-    /* CONTACT */
+    /* Lightbox */
+    .lightbox{
+      position:fixed; inset:0; z-index:999;
+      background: rgba(0,0,0,.86);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:18px;
+    }
+    .lightbox.show{display:flex}
+    .lbCard{
+      max-width:min(1080px, 96vw);
+      width:100%;
+      border-radius: 18px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(15,15,15,.70);
+      box-shadow: var(--shadow);
+      position:relative;
+    }
+    .lbCard img{width:100%; height:auto; display:block}
+    .lbClose{
+      position:absolute; top:10px; right:10px;
+      padding:10px 12px;
+      border-radius: 12px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.45);
+      color:#fff;
+      cursor:pointer;
+      font-weight:1000;
+    }
+
+    /* Contact */
     .contact{
       display:grid; grid-template-columns: 1.2fr .8fr;
       gap:14px;
@@ -303,10 +402,9 @@
       background: rgba(255,255,255,.04);
       text-decoration:none;
       margin-top:10px;
-      font-weight:800;
+      font-weight:900;
     }
 
-    /* FOOTER */
     footer{
       padding:24px 0 80px;
       color:rgba(255,255,255,.55);
@@ -314,21 +412,21 @@
       margin-top:20px;
     }
 
-    /* WA FLOAT */
+    /* WhatsApp */
     .wa{
       position:fixed; right:18px; bottom:18px; z-index:80;
       display:flex; align-items:center; gap:10px;
       padding:12px 14px; border-radius:999px;
       background: linear-gradient(135deg, var(--gold), var(--gold2));
-      color:#000; text-decoration:none; font-weight:900;
+      color:#000; text-decoration:none; font-weight:1000;
       box-shadow: 0 18px 50px rgba(0,0,0,.45);
       border:1px solid rgba(212,175,55,.35);
       transition: transform .15s ease;
     }
     .wa:hover{transform: translateY(-2px)}
-    .wa small{font-weight:800}
+    .wa small{font-weight:900}
 
-    /* FADE ANIM */
+    /* Reveal */
     .reveal{opacity:0; transform: translateY(16px); transition: opacity .8s ease, transform .8s ease}
     .reveal.show{opacity:1; transform:none}
   </style>
@@ -350,8 +448,8 @@
       <div class="links">
         <a href="#model">Investor Model</a>
         <a href="#calculator">ROI Calculator</a>
+        <a href="#gallery">Machine Gallery</a>
         <a href="#team">Team</a>
-        <a href="#gallery">Gallery</a>
         <a href="#contact">Contact</a>
         <a class="cta" href="Kacheri_Business_Solutions_Ultra_Premium_Investor_Agreement_Updated.pdf" download>📄 Download Agreement</a>
       </div>
@@ -362,91 +460,99 @@
     <div class="wrap mobile" id="mobileNav">
       <a href="#model">Investor Model</a>
       <a href="#calculator">ROI Calculator</a>
+      <a href="#gallery">Machine Gallery</a>
       <a href="#team">Team</a>
-      <a href="#gallery">Gallery</a>
       <a href="#contact">Contact</a>
       <a class="cta" href="Kacheri_Business_Solutions_Ultra_Premium_Investor_Agreement_Updated.pdf" download>📄 Download Agreement</a>
     </div>
   </div>
 
-  <!-- HERO -->
-  <div id="top" class="wrap hero">
-    <div class="heroGrid">
-      <div class="heroCard reveal">
-        <div class="tag">💎 Premium • Asset-backed • Monthly Payout</div>
-        <div class="hTitle">
-          Invest in Real Machines.<br>
-          Earn <span class="gold">₹12,000/Month</span>
-        </div>
-        <p class="hSub">
-          We install photocopier machines at corporate offices and collect monthly rental.
-          Investors receive fixed monthly payouts, with a clear end option at 5 years.
-        </p>
+  <!-- HERO VIDEO -->
+  <section id="top" class="heroShell">
+    <video class="heroVideo" autoplay muted loop playsinline>
+      <source src="videos/hero.mp4" type="video/mp4">
+    </video>
+    <div class="heroOverlay"></div>
+    <div class="heroNoise"></div>
 
-        <div class="heroBtns">
-          <a class="cta" href="#calculator">📊 Check Your ROI</a>
-          <a class="btn2" href="#model">How It Works →</a>
-          <a class="btn2" href="#contact">Call Now: 8247892087</a>
-        </div>
+    <div class="wrap heroContent">
+      <div class="heroGrid">
+        <div class="glass reveal">
+          <div class="tag">💎 Premium • Asset-Backed • Monthly Payout</div>
+          <div class="hTitle">
+            Invest in Real Assets.<br>
+            Earn <span class="gold">₹12,000/Month</span>
+          </div>
+          <p class="hSub">
+            We install photocopier machines at corporate offices and collect monthly rental.
+            Investors receive structured monthly payouts with a defined end option at 5 years.
+          </p>
 
-        <div class="stats">
-          <div class="stat">
-            <div class="v">₹1,50,000</div>
-            <div class="l">Investment per machine</div>
+          <div class="heroBtns">
+            <a class="cta" href="#calculator">📊 Check Your ROI</a>
+            <a class="btn2" href="#model">How It Works →</a>
+            <a class="btn2" href="tel:8247892087">📞 Call: 8247892087</a>
           </div>
-          <div class="stat">
-            <div class="v">₹12,000</div>
-            <div class="l">Monthly payout (60 months)</div>
-          </div>
-          <div class="stat">
-            <div class="v">End Option</div>
-            <div class="l">Principal refund OR machine ownership</div>
-          </div>
-        </div>
-      </div>
 
-      <div id="calculator" class="calc reveal">
-        <h3>📊 Live ROI Calculator</h3>
-        <p>Enter your numbers and see your total returns instantly (investor-focused).</p>
-
-        <div class="row">
-          <div>
-            <label>Investment (₹)</label>
-            <input id="inv" type="number" value="150000" min="0">
-          </div>
-          <div>
-            <label>Monthly Payout (₹)</label>
-            <input id="monthly" type="number" value="12000" min="0">
+          <div class="stats">
+            <div class="stat">
+              <div class="v">₹1,50,000</div>
+              <div class="l">Investment per machine</div>
+            </div>
+            <div class="stat">
+              <div class="v">₹12,000</div>
+              <div class="l">Monthly payout (60 months)</div>
+            </div>
+            <div class="stat">
+              <div class="v">End Option</div>
+              <div class="l">Refund OR machine ownership</div>
+            </div>
           </div>
         </div>
 
-        <div class="row" style="margin-top:12px;">
-          <div>
-            <label>Tenure (Months)</label>
-            <input id="months" type="number" value="60" min="1">
+        <div id="calculator" class="calc reveal">
+          <h3>📊 Live ROI Calculator</h3>
+          <p>Enter your numbers and see your total returns instantly.</p>
+
+          <div class="row">
+            <div>
+              <label>Investment (₹)</label>
+              <input id="inv" type="number" value="150000" min="0">
+            </div>
+            <div>
+              <label>Monthly Payout (₹)</label>
+              <input id="monthly" type="number" value="12000" min="0">
+            </div>
           </div>
-          <div>
-            <label>End Option Value (₹) (Principal / Machine)</label>
-            <input id="end" type="number" value="150000" min="0">
+
+          <div class="row" style="margin-top:12px;">
+            <div>
+              <label>Tenure (Months)</label>
+              <input id="months" type="number" value="60" min="1">
+            </div>
+            <div>
+              <label>End Option Value (₹) (Principal / Machine)</label>
+              <input id="end" type="number" value="150000" min="0">
+            </div>
           </div>
+
+          <div class="result">
+            <div class="big" id="totalReturn">₹0</div>
+            <div class="small" id="totalNote">Total payout including end option.</div>
+          </div>
+
+          <a class="cta" style="margin-top:14px; width:100%; justify-content:center"
+             href="Kacheri_Business_Solutions_Ultra_Premium_Investor_Agreement_Updated.pdf" download>
+            📄 Download Investor Agreement (PDF)
+          </a>
+
+          <p style="margin-top:12px; color:rgba(255,255,255,.68); font-size:12px; line-height:1.6">
+            *Estimation only. Terms subject to agreement and business operations.
+          </p>
         </div>
-
-        <div class="result" id="resultBox">
-          <div class="big" id="totalReturn">₹0</div>
-          <div class="small" id="totalNote">Total payout including end option.</div>
-        </div>
-
-        <a class="cta" style="margin-top:14px; width:100%; justify-content:center"
-           href="Kacheri_Business_Solutions_Ultra_Premium_Investor_Agreement_Updated.pdf" download>
-          📄 Download Investor Agreement (PDF)
-        </a>
-
-        <p style="margin-top:12px; color:var(--muted); font-size:12px; line-height:1.6">
-          *This calculator is for estimation only. Terms subject to agreement and business operations.
-        </p>
       </div>
     </div>
-  </div>
+  </section>
 
   <!-- MODEL -->
   <div id="model" class="wrap section">
@@ -465,7 +571,7 @@
         </div>
         <div class="card">
           <h4>3) Rental Collection & Payout</h4>
-          <p>We collect rental from clients and pay the investor monthly (on/before the 10th).</p>
+          <p>We collect rental and pay the investor monthly (on/before the 10th).</p>
         </div>
       </div>
 
@@ -480,71 +586,101 @@
     </div>
   </div>
 
-  <!-- TRUST -->
-  <div class="wrap section">
+  <!-- GALLERY -->
+  <div id="gallery" class="wrap section">
     <div class="reveal">
-      <h2 class="sTitle">Why Investors Trust KBS</h2>
-      <p class="sSub">Investor-first focus with professional operations and clear documentation.</p>
+      <h2 class="sTitle">Machine Gallery (Real Photos)</h2>
+      <p class="sSub">Upload your real machine photos in <b>images/gallery/</b>. Click to view full screen.</p>
 
-      <div class="cards">
-        <div class="card">
-          <h4>Asset-Backed</h4>
-          <p>Each plan is linked to a machine (real equipment value) and corporate usage.</p>
+      <div class="gallery">
+        <div class="photo" data-src="images/gallery/machine1.jpg">
+          <img src="images/gallery/machine1.jpg" alt="Photocopier Machine 1">
+          <div class="cap">Machine Installation <span>View</span></div>
         </div>
-        <div class="card">
-          <h4>Operations Managed by Company</h4>
-          <p>We handle installation, maintenance, service support and rental collections.</p>
+        <div class="photo" data-src="images/gallery/machine2.jpg">
+          <img src="images/gallery/machine2.jpg" alt="Photocopier Machine 2">
+          <div class="cap">Corporate Site <span>View</span></div>
         </div>
-        <div class="card">
-          <h4>Agreement + Clear Terms</h4>
-          <p>Download the agreement anytime. Simple payout date and end options are defined.</p>
+        <div class="photo" data-src="images/gallery/machine3.jpg">
+          <img src="images/gallery/machine3.jpg" alt="Photocopier Machine 3">
+          <div class="cap">Machine Setup <span>View</span></div>
+        </div>
+        <div class="photo" data-src="images/gallery/machine4.jpg">
+          <img src="images/gallery/machine4.jpg" alt="Photocopier Machine 4">
+          <div class="cap">Client Usage <span>View</span></div>
+        </div>
+
+        <div class="photo" data-src="images/gallery/site1.jpg">
+          <img src="images/gallery/site1.jpg" alt="Client Site 1">
+          <div class="cap">Client Location <span>View</span></div>
+        </div>
+        <div class="photo" data-src="images/gallery/site2.jpg">
+          <img src="images/gallery/site2.jpg" alt="Client Site 2">
+          <div class="cap">Corporate Office <span>View</span></div>
+        </div>
+        <div class="photo" data-src="images/gallery/site3.jpg">
+          <img src="images/gallery/site3.jpg" alt="Client Site 3">
+          <div class="cap">Machine in Office <span>View</span></div>
+        </div>
+        <div class="photo" data-src="images/gallery/site4.jpg">
+          <img src="images/gallery/site4.jpg" alt="Client Site 4">
+          <div class="cap">Service & Support <span>View</span></div>
         </div>
       </div>
     </div>
   </div>
 
   <!-- TEAM -->
-  <div id="team" class="wrap section">
-    <div class="reveal">
-      <h2 class="sTitle">Leadership Team</h2>
-      <p class="sSub">A reliable team is the strongest investor confidence.</p>
+  <!-- TEAM -->
+<div id="team" class="wrap section">
+  <div class="reveal">
+    <h2 class="sTitle">Leadership Team</h2>
+    <p class="sSub">A reliable team is the strongest investor confidence.</p>
 
-      <div class="team">
-       <div class="person">
-  <img src="images/team/DP.jpeg" alt="CEO">
-  <div>
-    <div class="role">CEO</div>
-    <div class="name">Kacheri Mansoor Ahamed</div>
-    <div class="desc">Investor relations, corporate partnerships, and growth strategy.</div>
-  </div>
-</div>
+    <div class="team">
+      <div class="person">
+        <img src="images/team/DP.jpeg" alt="CEO - Kacheri Mansoor Ahamed">
+        <div>
+          <div class="role">CEO</div>
+          <div class="name">Kacheri Mansoor Ahamed</div>
+          <div class="desc">Investor relations, corporate partnerships, and growth strategy.</div>
+          <div class="desc">
+            📞 <a href="tel:+918247892087" style="color:var(--gold); font-weight:900; text-decoration:none;">
+              +91 82478 92087
+            </a>
+            &nbsp; • &nbsp;
+            💬 <a href="https://wa.me/918247892087?text=Hi%20Kacheri%20Business%20Solutions,%20I%20want%20details%20about%20the%20Investor%20Rental%20Plan."
+               target="_blank" rel="noopener"
+               style="color:var(--gold); font-weight:900; text-decoration:none;">
+              WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
 
-<div class="person">
-  <img src="images/team/operations.jpeg" alt="Operations Manager">
-  <div>
-    <div class="role">Operations Manager</div>
-    <div class="name">Kacheri Inayath Ali</div>
-    <div class="desc">Installations, maintenance, service support and monthly collections.</div>
+      <div class="person">
+        <img src="images/team/operations.jpeg?v=2" alt="Operations Manager - Kacheri Inayath Ali">
+        <div>
+          <div class="role">Operations Manager</div>
+          <div class="name">Kacheri Inayath Ali</div>
+          <div class="desc">Installations, maintenance, service support and monthly collections.</div>
+          <div class="desc">
+            📞 <a href="tel:+916300896212" style="color:var(--gold); font-weight:900; text-decoration:none;">
+              +91 63008 96212
+            </a>
+            &nbsp; • &nbsp;
+            💬 <a href="https://wa.me/916300896212?text=Hi%20Kacheri%20Business%20Solutions,%20I%20want%20details%20about%20photocopier%20machine%20rentals%20and%20service."
+               target="_blank" rel="noopener"
+               style="color:var(--gold); font-weight:900; text-decoration:none;">
+              WhatsApp
+            </a>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- GALLERY -->
-  <div id="gallery" class="wrap section">
-    <div class="reveal">
-      <h2 class="sTitle">Corporate Machine Gallery</h2>
-      <p class="sSub">Add your real machine photos here. (Upload images and replace these boxes.)</p>
-
-      <div class="gallery">
-        <div class="g">Machine Photo 1</div>
-        <div class="g">Machine Photo 2</div>
-        <div class="g">Client Site 1</div>
-        <div class="g">Client Site 2</div>
-      </div>
-    </div>
   </div>
+</div>
 
   <!-- CONTACT -->
   <div id="contact" class="wrap section">
@@ -566,7 +702,9 @@
 
         <div class="card">
           <h4>Quick Actions</h4>
-          <p>Get faster response via WhatsApp or phone call.</p>
+          <p style="color:var(--muted); line-height:1.65; margin:0 0 12px">
+            Faster response via WhatsApp or phone call.
+          </p>
           <a class="cta" style="width:100%; justify-content:center" href="tel:8247892087">📞 Call Now</a>
           <a class="btn2" style="width:100%; justify-content:center; margin-top:10px"
              href="mailto:info@kacheribusinesssolutions.com">✉️ Email Us</a>
@@ -581,10 +719,27 @@
     </div>
   </footer>
 
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <div class="lbCard">
+      <button class="lbClose" id="lbClose">✕ Close</button>
+      <img id="lbImg" src="" alt="Gallery Image">
+    </div>
+  </div>
+
   <!-- WhatsApp Floating Button -->
-  <a class="wa" href="https://wa.me/918247892087?text=Hi%20Kacheri%20Business%20Solutions,%20I%20want%20details%20about%20the%20Investor%20Rental%20Plan." target="_blank" rel="noopener">
-    💬 WhatsApp <small>Chat</small>
-  </a>
+  <!-- WhatsApp Floating Buttons (2 Numbers) -->
+<a class="wa" style="bottom:18px;"
+   href="https://wa.me/918247892087?text=Hi%20Kacheri%20Business%20Solutions,%20I%20want%20details%20about%20the%20Investor%20Rental%20Plan."
+   target="_blank" rel="noopener">
+  💬 WhatsApp <small>CEO</small>
+</a>
+
+<a class="wa" style="bottom:70px;"
+   href="https://wa.me/916300896212?text=Hi%20Kacheri%20Business%20Solutions,%20I%20want%20details%20about%20photocopier%20machine%20rentals%20and%20service."
+   target="_blank" rel="noopener">
+  💬 WhatsApp <small>Ops</small>
+</a>
 
   <script>
     // Mobile menu
@@ -611,7 +766,6 @@
         return "₹" + Math.round(n).toLocaleString('en-IN');
       }
     }
-
     function calc(){
       const i = Number(inv.value || 0);
       const m = Number(monthly.value || 0);
@@ -624,16 +778,54 @@
       totalReturn.textContent = fmtINR(total);
       totalNote.textContent = `Estimated profit: ${fmtINR(profit)} • Total months: ${mo}`;
     }
-
     [inv, monthly, months, end].forEach(el => el && el.addEventListener('input', calc));
     calc();
 
-    // Smooth premium reveal on scroll
+    // Smooth reveal on scroll
     const reveals = document.querySelectorAll('.reveal');
     const obs = new IntersectionObserver((entries) => {
       entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('show'); });
     }, { threshold: 0.12 });
     reveals.forEach(r => obs.observe(r));
+
+    <div class="wrap section" style="padding-top:18px;">
+  <div class="card reveal" style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px;">
+    <div>
+      <h4 style="margin:0; color:var(--gold)">Investor Enquiry / Corporate Rental Enquiry</h4>
+      <p style="margin:6px 0 0; color:var(--muted)">Call or WhatsApp on either number for quick response.</p>
+    </div>
+    <div style="display:flex; gap:10px; flex-wrap:wrap;">
+      <a class="cta" href="tel:+918247892087">📞 Call CEO</a>
+      <a class="btn2" href="tel:+916300896212">📞 Call Ops</a>
+      <a class="btn2" target="_blank" rel="noopener"
+         href="https://wa.me/918247892087?text=Hi%20Kacheri%20Business%20Solutions,%20I%20want%20details%20about%20the%20Investor%20Rental%20Plan.">💬 WhatsApp CEO</a>
+      <a class="btn2" target="_blank" rel="noopener"
+         href="https://wa.me/916300896212?text=Hi%20Kacheri%20Business%20Solutions,%20I%20want%20details%20about%20photocopier%20machine%20rentals%20and%20service.">💬 WhatsApp Ops</a>
+    </div>
+  </div>
+</div>
+
+
+    // Gallery lightbox
+    const lightbox = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lbImg');
+    const lbClose = document.getElementById('lbClose');
+
+    document.querySelectorAll('.photo').forEach(card => {
+      card.addEventListener('click', () => {
+        const src = card.getAttribute('data-src');
+        lbImg.src = src;
+        lightbox.classList.add('show');
+      });
+    });
+
+    function closeLB(){
+      lightbox.classList.remove('show');
+      lbImg.src = "";
+    }
+    lbClose.addEventListener('click', closeLB);
+    lightbox.addEventListener('click', (e) => { if(e.target === lightbox) closeLB(); });
+    document.addEventListener('keydown', (e) => { if(e.key === "Escape") closeLB(); });
   </script>
 
 </body>
