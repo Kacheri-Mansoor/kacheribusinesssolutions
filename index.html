@@ -1,898 +1,240 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Kacheri Business Solutions</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kacheri Business Solutions</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --gold:#D4AF37;
+    --black:#000;
+    --card:#111;
+    --muted:#bdbdbd;
+  }
 
-  <style>
-    :root{
-      --bg:#070707;
-      --bg2:#0b0b0b;
-      --card:rgba(255,255,255,0.06);
-      --card2:rgba(255,255,255,0.08);
-      --line:rgba(255,255,255,0.10);
-      --text:#f1f1f1;
-      --muted:rgba(241,241,241,0.70);
-      --gold:#d7b86a;
-      --gold2:#f3d37c;
-      --shadow:0 18px 50px rgba(0,0,0,0.55);
-      --radius:18px;
-    }
+  body{
+    margin:0;
+    font-family: Arial, sans-serif;
+    background: var(--black);
+    color:#fff;
+  }
 
-    *{box-sizing:border-box;margin:0;padding:0;}
-    body{
-      font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Arial;
-      color:var(--text);
-      background: radial-gradient(1200px 600px at 10% 10%, rgba(215,184,106,0.10), transparent 60%),
-                  radial-gradient(1000px 700px at 90% 20%, rgba(243,211,124,0.07), transparent 55%),
-                  linear-gradient(180deg, #050505, #070707 30%, #050505);
-      overflow-x:hidden;
-    }
+  header{
+    text-align:center;
+    padding:48px 20px 30px;
+  }
 
-    a{color:inherit;text-decoration:none;}
-    .wrap{max-width:1200px;margin:0 auto;padding:0 20px;}
+  header img{
+    width:160px;
+    height:auto;
+  }
 
-    /* Premium top bar */
-    .topbar{
-      position:sticky; top:0; z-index:50;
-      backdrop-filter: blur(14px);
-      background: rgba(5,5,5,0.65);
-      border-bottom:1px solid rgba(255,255,255,0.08);
-    }
-    .nav{
-      display:flex; align-items:center; justify-content:space-between;
-      padding:14px 0;
-    }
-    .brand{
-      display:flex; align-items:center; gap:12px;
-    }
-    .brand img{
-      width:44px;height:44px;border-radius:12px;object-fit:cover;
-      box-shadow:0 0 0 1px rgba(215,184,106,0.35), 0 10px 30px rgba(215,184,106,0.10);
-    }
-    .brand .name{
-      line-height:1.05;
-    }
-    .brand .name .t1{
-      font-family:"Playfair Display", serif;
-      font-size:18px; letter-spacing:0.2px;
-    }
-    .brand .name .t2{
-      font-size:12px; color:var(--muted);
-    }
+  h1{
+    color:var(--gold);
+    margin:12px 0 6px;
+    font-size:34px;
+    letter-spacing:0.5px;
+  }
 
-    .menu{
-      display:flex; align-items:center; gap:18px; flex-wrap:wrap;
-    }
-    .menu a{
-      font-size:13px; color:rgba(241,241,241,0.85);
-      padding:8px 10px; border-radius:999px;
-      border:1px solid transparent;
-      transition: 250ms ease;
-    }
-    .menu a:hover{
-      border-color:rgba(215,184,106,0.40);
-      background:rgba(215,184,106,0.08);
-      color:#fff;
-    }
+  .sub{
+    color:var(--muted);
+    margin:0;
+    font-size:15px;
+  }
 
-    .cta{
-      display:flex; gap:10px; align-items:center;
-    }
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      padding:10px 14px;
-      border-radius:999px;
-      border:1px solid rgba(215,184,106,0.45);
-      background: linear-gradient(180deg, rgba(215,184,106,0.22), rgba(215,184,106,0.08));
-      color:#fff;
-      font-weight:600;
-      letter-spacing:0.2px;
-      transition: transform 220ms ease, box-shadow 220ms ease, background 220ms ease;
-      box-shadow: 0 12px 35px rgba(215,184,106,0.10);
-      font-size:13px;
-      white-space:nowrap;
-    }
-    .btn:hover{ transform: translateY(-2px); box-shadow: 0 18px 55px rgba(215,184,106,0.14); }
-    .btn.ghost{
-      border:1px solid rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.04);
-      box-shadow:none;
-      color:rgba(241,241,241,0.9);
-    }
-    .btn.ghost:hover{ background: rgba(255,255,255,0.06); transform: translateY(-2px); }
+  .section{
+    padding:56px 18px;
+    text-align:center;
+  }
 
-    /* Hero with video */
-    .hero{
-      position:relative;
-      padding:64px 0 38px;
-    }
-    .heroCard{
-      position:relative;
-      border-radius:28px;
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,0.10);
-      box-shadow: var(--shadow);
-      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
-    }
-    .heroVideo{
-      position:absolute; inset:0;
-      width:100%; height:100%;
-      object-fit:cover;
-      filter: contrast(1.05) saturate(1.1);
-      opacity:0.35;
-      transform: scale(1.03);
-    }
-    .heroOverlay{
-      position:absolute; inset:0;
-      background:
-        radial-gradient(900px 500px at 20% 20%, rgba(215,184,106,0.22), transparent 55%),
-        radial-gradient(700px 420px at 80% 35%, rgba(243,211,124,0.16), transparent 55%),
-        linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.75));
-    }
-    .heroInner{
-      position:relative;
-      padding:70px 28px 28px;
-      display:grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap:22px;
-      align-items:stretch;
-    }
+  .section h2{
+    color:var(--gold);
+    margin:0 0 22px;
+    font-size:26px;
+  }
 
-    .badge{
-      display:inline-flex; gap:8px; align-items:center;
-      padding:8px 12px;
-      border-radius:999px;
-      border:1px solid rgba(215,184,106,0.40);
-      background: rgba(215,184,106,0.10);
-      color:rgba(241,241,241,0.95);
-      font-size:12px;
-      width:fit-content;
-    }
-    .dot{
-      width:8px;height:8px;border-radius:99px;
-      background: radial-gradient(circle at 30% 30%, var(--gold2), var(--gold));
-      box-shadow:0 0 0 4px rgba(215,184,106,0.12);
-    }
+  .card{
+    background:var(--card);
+    padding:28px;
+    margin:18px auto;
+    max-width:900px;
+    border-radius:14px;
+    box-shadow:0 0 24px rgba(212,175,55,0.18);
+    border:1px solid rgba(212,175,55,0.12);
+  }
 
-    .hTitle{
-      margin-top:14px;
-      font-family:"Playfair Display", serif;
-      font-size:46px;
-      line-height:1.05;
-      letter-spacing:0.2px;
-    }
-    .hSub{
-      margin-top:14px;
-      color:var(--muted);
-      font-size:15px;
-      max-width:58ch;
-    }
+  .grid{
+    max-width:1000px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap:18px;
+  }
 
-    .hStats{
-      margin-top:18px;
-      display:flex; gap:12px; flex-wrap:wrap;
-    }
-    .pill{
-      padding:10px 12px;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,0.12);
-      background: rgba(0,0,0,0.25);
-      font-size:13px;
-      color:rgba(241,241,241,0.92);
-    }
-    .pill b{ color:var(--gold2); }
+  @media (max-width: 720px){
+    .grid{ grid-template-columns: 1fr; }
+    header img{ width:140px; }
+    h1{ font-size:30px; }
+  }
 
-    .heroActions{
-      margin-top:22px;
-      display:flex; gap:10px; flex-wrap:wrap;
-    }
+  .button{
+    background:var(--gold);
+    color:#000;
+    padding:15px 28px;
+    text-decoration:none;
+    border-radius:10px;
+    font-weight:bold;
+    display:inline-block;
+    margin-top:18px;
+    transition: transform .15s ease, background .2s ease;
+  }
 
-    /* Right side premium card */
-    .glowCard{
-      border-radius:22px;
-      border:1px solid rgba(215,184,106,0.25);
-      background: linear-gradient(180deg, rgba(215,184,106,0.12), rgba(255,255,255,0.03));
-      padding:18px;
-      box-shadow: 0 16px 55px rgba(0,0,0,0.45);
-      display:flex; flex-direction:column; justify-content:space-between;
-    }
-    .glowCard h3{
-      font-family:"Playfair Display", serif;
-      font-size:22px;
-      letter-spacing:0.2px;
-    }
-    .glowCard p{
-      color:var(--muted);
-      margin-top:8px;
-      font-size:13px;
-      line-height:1.6;
-    }
-    .hr{
-      margin:14px 0;
-      height:1px;
-      background: linear-gradient(90deg, transparent, rgba(215,184,106,0.55), transparent);
-      opacity:0.9;
-    }
-    .miniRow{
-      display:flex; justify-content:space-between; gap:10px;
-      font-size:13px; color:rgba(241,241,241,0.9);
-      margin-top:8px;
-    }
-    .miniRow span:last-child{ color:var(--gold2); font-weight:700; }
-    .agree{
-      margin-top:14px;
-      display:flex; gap:10px; flex-wrap:wrap;
-    }
+  .button:hover{
+    background:#b8962e;
+    transform: translateY(-2px);
+  }
 
-    /* Sections */
-    section{ padding:66px 0; }
-    .sectionTitle{
-      text-align:center;
-      font-family:"Playfair Display", serif;
-      font-size:34px;
-      margin-bottom:14px;
-    }
-    .sectionSub{
-      text-align:center;
-      color:var(--muted);
-      max-width:80ch;
-      margin:0 auto 28px;
-      font-size:14px;
-      line-height:1.7;
-    }
+  .team-wrap{
+    max-width:1000px;
+    margin:0 auto;
+  }
 
-    /* Cards grid */
-    .grid3{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:16px;
-    }
-    .card{
-      background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03));
-      border:1px solid rgba(255,255,255,0.10);
-      border-radius: var(--radius);
-      padding:18px;
-      box-shadow: 0 14px 45px rgba(0,0,0,0.35);
-      position:relative;
-      overflow:hidden;
-      min-height:140px;
-    }
-    .card:before{
-      content:"";
-      position:absolute; inset:-2px;
-      background: radial-gradient(500px 200px at 20% 10%, rgba(215,184,106,0.20), transparent 60%);
-      opacity:0.8;
-      pointer-events:none;
-    }
-    .card h4{ position:relative; font-size:16px; }
-    .card p{ position:relative; margin-top:10px; color:var(--muted); font-size:13px; line-height:1.6; }
+  .team-card{
+    background:var(--card);
+    border-radius:16px;
+    padding:22px;
+    border:1px solid rgba(212,175,55,0.12);
+    box-shadow:0 0 18px rgba(212,175,55,0.14);
+    text-align:center;
+  }
 
-    /* ROI Calculator */
-    .calcWrap{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:16px;
-      align-items:stretch;
-    }
-    .formRow{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:12px;
-      margin-top:12px;
-    }
-    .field{
-      display:flex; flex-direction:column; gap:6px;
-    }
-    label{ font-size:12px; color:rgba(241,241,241,0.8); }
-    input, select{
-      width:100%;
-      padding:12px 12px;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,0.12);
-      background: rgba(0,0,0,0.25);
-      color: var(--text);
-      outline:none;
-    }
-    input:focus, select:focus{
-      border-color: rgba(215,184,106,0.55);
-      box-shadow: 0 0 0 4px rgba(215,184,106,0.12);
-    }
-    .resultBox{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:12px;
-      margin-top:14px;
-    }
-    .kpi{
-      border-radius:16px;
-      border:1px solid rgba(215,184,106,0.25);
-      background: rgba(215,184,106,0.08);
-      padding:14px;
-    }
-    .kpi .k{ font-size:12px; color:rgba(241,241,241,0.78); }
-    .kpi .v{ margin-top:6px; font-size:18px; font-weight:800; color:var(--gold2); letter-spacing:0.2px; }
+  .team-img{
+    width:140px;
+    height:140px;
+    object-fit:cover;
+    border-radius:50%;
+    border:3px solid rgba(212,175,55,0.75);
+    box-shadow:0 0 18px rgba(212,175,55,0.22);
+    background:#000;
+  }
 
-    .note{
-      margin-top:12px;
-      color:rgba(241,241,241,0.65);
-      font-size:12px;
-      line-height:1.6;
-    }
+  .team-name{
+    margin:14px 0 6px;
+    font-size:18px;
+    font-weight:bold;
+    color:#fff;
+  }
 
-    /* Team */
-    .team{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:16px;
-    }
-    .person{
-      border-radius:20px;
-      border:1px solid rgba(255,255,255,0.10);
-      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
-      padding:18px;
-      box-shadow: 0 14px 45px rgba(0,0,0,0.35);
-      overflow:hidden;
-      position:relative;
-    }
-    .person:before{
-      content:"";
-      position:absolute; inset:-2px;
-      background: radial-gradient(450px 220px at 30% 10%, rgba(215,184,106,0.22), transparent 60%);
-      pointer-events:none;
-    }
-    .avatar{
-      width:70px;height:70px;border-radius:18px;
-      border:1px solid rgba(215,184,106,0.35);
-      object-fit:cover;
-      box-shadow:0 18px 40px rgba(0,0,0,0.45);
-      position:relative;
-    }
-    .person h4{ margin-top:12px; position:relative; }
-    .role{ margin-top:4px; color:var(--muted); font-size:13px; position:relative; }
-    .person .small{ margin-top:10px; color:rgba(241,241,241,0.72); font-size:12px; line-height:1.6; position:relative; }
+  .team-role{
+    margin:0;
+    color:var(--gold);
+    font-weight:bold;
+    letter-spacing:0.3px;
+  }
 
-    /* Gallery */
-    .gallery{
-      display:grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap:12px;
-    }
-    .gItem{
-      border-radius:18px;
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,0.10);
-      background: rgba(255,255,255,0.03);
-      box-shadow: 0 14px 45px rgba(0,0,0,0.35);
-      position:relative;
-      cursor:pointer;
-      transform: translateZ(0);
-    }
-    .gItem img{
-      width:100%;
-      height:190px;
-      object-fit:cover;
-      display:block;
-      transition: transform 350ms ease, filter 350ms ease;
-      filter: contrast(1.05) saturate(1.05);
-    }
-    .gItem:hover img{
-      transform: scale(1.06);
-      filter: contrast(1.08) saturate(1.2);
-    }
-    .gCap{
-      position:absolute;
-      left:10px; bottom:10px;
-      padding:8px 10px;
-      border-radius:12px;
-      border:1px solid rgba(215,184,106,0.28);
-      background: rgba(0,0,0,0.40);
-      font-size:12px;
-      color:rgba(241,241,241,0.92);
-      backdrop-filter: blur(10px);
-    }
+  .team-note{
+    margin:10px 0 0;
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.5;
+  }
 
-    /* Contact footer */
-    .contactGrid{
-      display:grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap:16px;
-    }
-    .contactCard{
-      border-radius:22px;
-      border:1px solid rgba(255,255,255,0.10);
-      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
-      padding:18px;
-      box-shadow: var(--shadow);
-      position:relative;
-      overflow:hidden;
-    }
-    .contactCard:before{
-      content:"";
-      position:absolute; inset:-2px;
-      background: radial-gradient(520px 250px at 15% 20%, rgba(215,184,106,0.20), transparent 65%);
-      pointer-events:none;
-    }
-    .contactCard h3{
-      position:relative;
-      font-family:"Playfair Display", serif;
-      font-size:22px;
-    }
-    .contactCard p{
-      position:relative;
-      margin-top:10px;
-      color:var(--muted);
-      line-height:1.75;
-      font-size:13px;
-    }
-    .contactList{
-      margin-top:14px;
-      display:grid; gap:8px;
-      position:relative;
-    }
-    .contactList div{
-      padding:10px 12px;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,0.10);
-      background: rgba(0,0,0,0.22);
-      font-size:13px;
-    }
-    .contactList b{ color:var(--gold2); }
+  .mini{
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.6;
+    margin:0;
+  }
 
-    .footer{
-      padding:18px 0 40px;
-      text-align:center;
-      color:rgba(241,241,241,0.65);
-      font-size:12px;
-    }
-
-    /* Animations */
-    .reveal{
-      opacity:0;
-      transform: translateY(16px);
-      transition: opacity 700ms ease, transform 700ms ease;
-    }
-    .reveal.show{
-      opacity:1;
-      transform: translateY(0);
-    }
-    .shine{
-      position:relative;
-      overflow:hidden;
-    }
-    .shine:after{
-      content:"";
-      position:absolute; top:-30%; left:-40%;
-      width:40%; height:160%;
-      background: linear-gradient(120deg, transparent, rgba(243,211,124,0.18), transparent);
-      transform: rotate(18deg);
-      animation: sweep 4.6s ease-in-out infinite;
-      pointer-events:none;
-    }
-    @keyframes sweep{
-      0%{ left:-60%; opacity:0; }
-      18%{ opacity:1; }
-      45%{ left:120%; opacity:0; }
-      100%{ left:120%; opacity:0; }
-    }
-
-    /* Responsive */
-    @media (max-width: 980px){
-      .heroInner{ grid-template-columns:1fr; padding:58px 18px 18px; }
-      .grid3{ grid-template-columns:1fr; }
-      .calcWrap{ grid-template-columns:1fr; }
-      .team{ grid-template-columns:1fr; }
-      .gallery{ grid-template-columns: repeat(2, 1fr); }
-      .contactGrid{ grid-template-columns:1fr; }
-      .hTitle{ font-size:38px; }
-      .menu{ display:none; }
-    }
-  </style>
+  footer{
+    background:#0e0e0e;
+    padding:20px 12px;
+    text-align:center;
+    font-size:13px;
+    color:#9a9a9a;
+    border-top:1px solid rgba(212,175,55,0.12);
+  }
+</style>
 </head>
 
 <body>
 
-  <!-- TOP BAR -->
-  <div class="topbar">
-    <div class="wrap">
-      <div class="nav">
-        <a class="brand" href="#home">
-          <img src="logo.png" alt="Kacheri Logo" />
-          <div class="name">
-            <div class="t1">Kacheri Business Solutions</div>
-            <div class="t2">Premium Corporate Rental • Investor Model</div>
-          </div>
-        </a>
+<header>
+  <img src="logo.png" alt="Kacheri Business Solutions Logo" />
+  <h1>Kacheri Business Solutions</h1>
+  <p class="sub">Premium Photocopier Rental • Asset-backed Investor Opportunity</p>
+</header>
 
-        <div class="menu">
-          <a href="#about">About</a>
-          <a href="#how">How it Works</a>
-          <a href="#roi">ROI Calculator</a>
-          <a href="#team">Team</a>
-          <a href="#gallery">Gallery</a>
-          <a href="#contact">Contact</a>
-        </div>
+<section class="section">
+  <h2>About Our Business</h2>
+  <div class="card">
+    <p class="mini">
+      We provide reliable photocopier rental solutions for corporate offices, institutions, and businesses in Anantapur.
+      We also offer an asset-backed investor rental model with fixed monthly returns for 5 years.
+    </p>
+  </div>
+</section>
 
-        <div class="cta">
-          <a class="btn ghost" href="assets/docs/investor-agreement.pdf" download>Download Agreement</a>
-          <a class="btn" href="https://wa.me/918247892087" target="_blank" rel="noopener">WhatsApp Now</a>
-        </div>
+<section class="section">
+  <h2>Investor Rental Plan</h2>
+  <div class="card">
+    <p><strong>Investment:</strong> ₹1,50,000 per machine</p>
+    <p><strong>Monthly Return:</strong> ₹12,000</p>
+    <p><strong>Tenure:</strong> 5 Years (60 Months)</p>
+    <p><strong>Total Payout:</strong> ₹7,20,000</p>
+    <p><strong>End Option:</strong> Machine Return OR Principal Refund</p>
+
+    <a
+      href="Kacheri_Business_Solutions_Ultra_Premium_Investor_Agreement_Updated.pdf"
+      download
+      class="button"
+    >
+      📄 Download Investor Agreement
+    </a>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Our Team</h2>
+
+  <div class="team-wrap">
+    <div class="grid">
+      <!-- CEO -->
+      <div class="team-card">
+        <img class="team-img" src="DP.jpeg" alt="CEO - Kacheri Business Solutions">
+        <div class="team-name">Kacheri Mansoor Ahamed (CEO)</div>
+        <p class="team-role">Kacheri Inayath Ali (Chief Executive Officer)</p>
+        <p class="team-note">
+          Leads business growth, investor relations, and corporate partnerships.
+        </p>
+      </div>
+
+      <!-- Operations Manager -->
+      <div class="team-card">
+        <img class="team-img" src="WhatsApp Image 2026-02-14 at 6.34.49 PM.jpeg" alt="Operations Manager - Kacheri Business Solutions">
+        <div class="team-name">Operations Manager</div>
+        <p class="team-role">Operations & Service Management</p>
+        <p class="team-note">
+          Manages installations, maintenance, support, and monthly rental collections.
+        </p>
       </div>
     </div>
   </div>
+</section>
 
-  <!-- HERO -->
-  <header class="hero" id="home">
-    <div class="wrap">
-      <div class="heroCard shine reveal">
-        <video class="heroVideo" autoplay muted loop playsinline>
-          <source src="assets/video/bg.mp4" type="video/mp4">
-        </video>
-        <div class="heroOverlay"></div>
+<section class="section">
+  <h2>Contact Us</h2>
+  <div class="card">
+    <p><strong>Phone:</strong> 8247892087</p>
+    <p><strong>Email:</strong> info@kacheribusinesssolutions.com</p>
+    <p><strong>Address:</strong> Housing Board Colony, Opp. Canara Bank, Anantapur, Andhra Pradesh</p>
+  </div>
+</section>
 
-        <div class="heroInner">
-          <div>
-            <div class="badge"><span class="dot"></span> Gold-Standard Passive Income Model</div>
-            <h1 class="hTitle">Photocopier Machines on Rental<br/>with Monthly Returns</h1>
-            <p class="hSub">
-              We install high-end photocopier machines at corporate client locations and generate stable rental income.
-              Investors receive monthly payouts backed by structured rental operations.
-            </p>
-
-            <div class="hStats">
-              <div class="pill"><b>₹12,000</b> Monthly Payout</div>
-              <div class="pill"><b>5 Years</b> Term</div>
-              <div class="pill"><b>₹1,50,000</b> Principal (Example)</div>
-              <div class="pill"><b>End Option</b> Machine / Amount Return</div>
-            </div>
-
-            <div class="heroActions">
-              <a class="btn" href="#roi">Check ROI Calculator</a>
-              <a class="btn ghost" href="#contact">Request a Call</a>
-            </div>
-          </div>
-
-          <div class="glowCard reveal">
-            <div>
-              <h3>Investor Snapshot</h3>
-              <p>
-                Transparent structure with monthly payouts and clear end-term option.
-                Download the agreement for details and connect with our team.
-              </p>
-              <div class="hr"></div>
-              <div class="miniRow"><span>Monthly Payout</span><span>₹12,000</span></div>
-              <div class="miniRow"><span>Tenure</span><span>60 Months</span></div>
-              <div class="miniRow"><span>End-Term Option</span><span>Machine / Amount</span></div>
-            </div>
-
-            <div class="agree">
-              <a class="btn ghost" href="assets/docs/investor-agreement.pdf" download>Download PDF</a>
-              <a class="btn" href="#contact">Get Full Details</a>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="wrap">
-      <h2 class="sectionTitle reveal">Luxury Corporate Model. Real-World Rentals.</h2>
-      <p class="sectionSub reveal">
-        Kacheri Business Solutions provides photocopier machines on rental to corporate offices. Our model focuses on
-        predictable rental collections and systematic payouts to investors with premium service support.
-      </p>
-
-      <div class="grid3">
-        <div class="card reveal">
-          <h4>Corporate Clients</h4>
-          <p>Machines placed at corporate locations where usage is consistent and rental billing is structured.</p>
-        </div>
-        <div class="card reveal">
-          <h4>Transparent Payouts</h4>
-          <p>Monthly payout model with a clear term and end-term return option for principal value / machine.</p>
-        </div>
-        <div class="card reveal">
-          <h4>Premium Service</h4>
-          <p>Installation, maintenance coordination, and client relationship management under one system.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- HOW IT WORKS -->
-  <section id="how">
-    <div class="wrap">
-      <h2 class="sectionTitle reveal">How It Works</h2>
-      <p class="sectionSub reveal">
-        Simple 3-step process designed for clarity and trust.
-      </p>
-
-      <div class="grid3">
-        <div class="card reveal">
-          <h4>1) Your Investment</h4>
-          <p>Invest in a photocopier unit (example ₹1,50,000) for deployment at a client location.</p>
-        </div>
-        <div class="card reveal">
-          <h4>2) Installation at Client</h4>
-          <p>We install the machine at a corporate office and run the rental operations.</p>
-        </div>
-        <div class="card reveal">
-          <h4>3) Monthly Payout</h4>
-          <p>You receive the agreed monthly payout. At the end, choose machine return or amount return.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ROI CALCULATOR -->
-  <section id="roi">
-    <div class="wrap">
-      <h2 class="sectionTitle reveal">Live ROI Calculator</h2>
-      <p class="sectionSub reveal">
-        Change values and instantly see total return, ROI %, and estimated annual growth.
-      </p>
-
-      <div class="calcWrap">
-        <div class="contactCard reveal">
-          <h3 style="position:relative;">Calculator Inputs</h3>
-          <p style="position:relative;">Enter your plan values. Results update automatically.</p>
-
-          <div class="formRow">
-            <div class="field">
-              <label>Investment (₹)</label>
-              <input id="inv" type="number" value="150000" min="0" step="1000">
-            </div>
-            <div class="field">
-              <label>Monthly Payout (₹)</label>
-              <input id="monthly" type="number" value="12000" min="0" step="500">
-            </div>
-          </div>
-
-          <div class="formRow">
-            <div class="field">
-              <label>Tenure (Years)</label>
-              <input id="years" type="number" value="5" min="1" step="1">
-            </div>
-            <div class="field">
-              <label>End-Term Return</label>
-              <select id="endReturn">
-                <option value="principal" selected>Principal Amount Return</option>
-                <option value="principal">Machine Return (value assumed = principal)</option>
-              </select>
-            </div>
-          </div>
-
-          <p class="note">
-            * CAGR is an estimate assuming monthly payouts are reinvested as part of overall return calculation.
-            This calculator is for quick understanding and not financial advice.
-          </p>
-        </div>
-
-        <div class="contactCard reveal">
-          <h3 style="position:relative;">Results</h3>
-          <p style="position:relative;">Based on your inputs:</p>
-
-          <div class="resultBox">
-            <div class="kpi">
-              <div class="k">Total Payout (Tenure)</div>
-              <div class="v" id="totalPayout">—</div>
-            </div>
-            <div class="kpi">
-              <div class="k">End-Term Return</div>
-              <div class="v" id="endValue">—</div>
-            </div>
-            <div class="kpi">
-              <div class="k">Total Return</div>
-              <div class="v" id="totalReturn">—</div>
-            </div>
-            <div class="kpi">
-              <div class="k">ROI % (Total)</div>
-              <div class="v" id="roiPct">—</div>
-            </div>
-            <div class="kpi">
-              <div class="k">Payback (Approx.)</div>
-              <div class="v" id="payback">—</div>
-            </div>
-            <div class="kpi">
-              <div class="k">Estimated CAGR</div>
-              <div class="v" id="cagr">—</div>
-            </div>
-          </div>
-
-          <div class="heroActions" style="margin-top:14px; position:relative;">
-            <a class="btn ghost" href="assets/docs/investor-agreement.pdf" download>Download Agreement</a>
-            <a class="btn" href="https://wa.me/918247892087" target="_blank" rel="noopener">Discuss on WhatsApp</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TEAM -->
-  <section id="team">
-    <div class="wrap">
-      <h2 class="sectionTitle reveal">Our Team</h2>
-      <p class="sectionSub reveal">
-        A focused team dedicated to corporate rentals, service coordination, and investor support.
-      </p>
-
-      <div class="team">
-        <div class="person reveal">
-          <img class="avatar" src="assets/team/mansoor.jpg" alt="Mansoor">
-          <h4>Mansoor</h4>
-          <div class="role">Founder & Director</div>
-          <div class="small">Operations strategy, client onboarding, and investor relationships.</div>
-        </div>
-
-        <div class="person reveal">
-          <img class="avatar" src="assets/team/member2.jpg" alt="Team Member">
-          <h4>Team Member</h4>
-          <div class="role">Corporate Relations</div>
-          <div class="small">Corporate client coordination, site installation scheduling and reporting.</div>
-        </div>
-
-        <div class="person reveal">
-          <img class="avatar" src="assets/team/member3.jpg" alt="Team Member">
-          <h4>Team Member</h4>
-          <div class="role">Service & Support</div>
-          <div class="small">Maintenance coordination, consumables planning, and service response.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- GALLERY -->
-  <section id="gallery">
-    <div class="wrap">
-      <h2 class="sectionTitle reveal">Corporate Machine Gallery</h2>
-      <p class="sectionSub reveal">
-        Add your real machine photos here. Upload to <b>assets/gallery/</b> and keep file names same as below.
-      </p>
-
-      <div class="gallery">
-        <div class="gItem reveal"><img src="assets/gallery/machine1.jpg" alt="Machine 1"><div class="gCap">Corporate Installation</div></div>
-        <div class="gItem reveal"><img src="assets/gallery/machine2.jpg" alt="Machine 2"><div class="gCap">High-End Copier</div></div>
-        <div class="gItem reveal"><img src="assets/gallery/machine3.jpg" alt="Machine 3"><div class="gCap">Client Site Setup</div></div>
-        <div class="gItem reveal"><img src="assets/gallery/machine4.jpg" alt="Machine 4"><div class="gCap">Premium Rental Unit</div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="wrap">
-      <h2 class="sectionTitle reveal">Contact</h2>
-      <p class="sectionSub reveal">
-        Connect with us for full plan details, agreement, and onboarding steps.
-      </p>
-
-      <div class="contactGrid">
-        <div class="contactCard reveal">
-          <h3>Get Investor Details</h3>
-          <p>
-            Share your preferred investment amount and we’ll send you the plan details and agreement.
-          </p>
-
-          <div class="contactList">
-            <div><b>Phone:</b> 8247892087</div>
-            <div><b>Email:</b> info@kacheribusinesssolutions.com</div>
-            <div><b>Website:</b> www.kacheribusinesssolutions.com</div>
-            <div><b>Address:</b> Housing Board Colony Opp. Canara Bank, Anantapur, Andhra Pradesh</div>
-          </div>
-
-          <div class="heroActions" style="position:relative;">
-            <a class="btn" href="https://wa.me/918247892087" target="_blank" rel="noopener">WhatsApp Now</a>
-            <a class="btn ghost" href="mailto:info@kacheribusinesssolutions.com">Email Us</a>
-          </div>
-        </div>
-
-        <div class="contactCard reveal">
-          <h3>Download Agreement</h3>
-          <p>Keep your investor agreement PDF inside <b>assets/docs/</b>.</p>
-          <div class="heroActions" style="position:relative; margin-top:12px;">
-            <a class="btn" href="assets/docs/investor-agreement.pdf" download>Download PDF</a>
-            <a class="btn ghost" href="#roi">Calculate ROI</a>
-          </div>
-
-          <p class="note" style="position:relative; margin-top:14px;">
-            Tip: If you want Google-style preview box also, tell me — I’ll add it under the header.
-          </p>
-        </div>
-      </div>
-
-      <div class="footer">
-        © 2026 Kacheri Business Solutions • All Rights Reserved
-      </div>
-    </div>
-  </section>
-
-  <script>
-    // ---- Scroll reveal animation ----
-    const reveals = document.querySelectorAll('.reveal');
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{
-        if(e.isIntersecting){
-          e.target.classList.add('show');
-          io.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.14 });
-    reveals.forEach(el=>io.observe(el));
-
-    // ---- ROI Calculator ----
-    const inv = document.getElementById('inv');
-    const monthly = document.getElementById('monthly');
-    const years = document.getElementById('years');
-    const endReturn = document.getElementById('endReturn');
-
-    const totalPayout = document.getElementById('totalPayout');
-    const endValue = document.getElementById('endValue');
-    const totalReturn = document.getElementById('totalReturn');
-    const roiPct = document.getElementById('roiPct');
-    const payback = document.getElementById('payback');
-    const cagr = document.getElementById('cagr');
-
-    function formatINR(n){
-      if(!isFinite(n)) return "—";
-      return "₹" + Math.round(n).toLocaleString('en-IN');
-    }
-
-    // Rough CAGR estimate using total return at end vs investment (not perfect for cashflows)
-    function estimateCAGR(investment, totalEndValue, yrs){
-      if(investment <= 0 || yrs <= 0) return null;
-      const ratio = totalEndValue / investment;
-      if(ratio <= 0) return null;
-      return (Math.pow(ratio, 1/yrs) - 1) * 100;
-    }
-
-    function calc(){
-      const I = Number(inv.value || 0);
-      const M = Number(monthly.value || 0);
-      const Y = Number(years.value || 0);
-      const months = Y * 12;
-
-      const payouts = M * months;
-
-      // End return assumed principal value
-      const endVal = I;
-
-      const total = payouts + endVal;
-      const roi = I > 0 ? ((total - I) / I) * 100 : null;
-
-      // Payback months approx: investment / monthly payout
-      const pbMonths = M > 0 ? (I / M) : null;
-
-      // CAGR estimate: total end value vs investment (simple approximation)
-      const cagrVal = estimateCAGR(I, total, Y);
-
-      totalPayout.textContent = formatINR(payouts);
-      endValue.textContent = formatINR(endVal);
-      totalReturn.textContent = formatINR(total);
-
-      roiPct.textContent = (roi === null || !isFinite(roi)) ? "—" : (roi.toFixed(1) + "%");
-      payback.textContent = (pbMonths === null || !isFinite(pbMonths)) ? "—" : (pbMonths.toFixed(1) + " months");
-      cagr.textContent = (cagrVal === null || !isFinite(cagrVal)) ? "—" : (cagrVal.toFixed(1) + "% / year");
-    }
-
-    [inv, monthly, years, endReturn].forEach(el => el.addEventListener('input', calc));
-    calc();
-
-    // ---- Optional: click gallery to open image in new tab ----
-    document.querySelectorAll('.gItem').forEach(item=>{
-      item.addEventListener('click', ()=>{
-        const img = item.querySelector('img');
-        if(img && img.src) window.open(img.src, '_blank');
-      });
-    });
-  </script>
+<footer>
+  © 2026 Kacheri Business Solutions | All Rights Reserved
+</footer>
 
 </body>
 </html>
