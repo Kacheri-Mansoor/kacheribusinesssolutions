@@ -5,49 +5,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Kacheri Business Solutions</title>
   <meta name="description" content="Kacheri Business Solutions - Photocopier Rental & Asset-backed Investor Model" />
- /* =========================
-   ULTRA PREMIUM HERO LOGO
-========================= */
-.heroBigLogo{
-  text-align:center;
-  margin-bottom:30px;
-  animation: logoEntrance 1.4s cubic-bezier(.2,.8,.2,1) forwards;
-  opacity:0;
-  position:relative;
-  z-index:5;
-}
 
-.heroBigLogo img{
-  width:100%;
-  max-width:800px;
-  height:auto;
-  filter:
-    drop-shadow(0 0 25px rgba(212,175,55,.45))
-    drop-shadow(0 0 60px rgba(212,175,55,.25));
-  animation: goldPulse 3s ease-in-out infinite alternate;
-}
-
-/* CINEMATIC ENTRANCE */
-@keyframes logoEntrance{
-  0%{opacity:0; transform:translateY(60px) scale(.9);}
-  60%{opacity:1; transform:translateY(-8px) scale(1.02);}
-  100%{opacity:1; transform:translateY(0) scale(1);}
-}
-
-/* GOLD GLOW PULSE */
-@keyframes goldPulse{
-  from{
-    filter:
-      drop-shadow(0 0 20px rgba(212,175,55,.35))
-      drop-shadow(0 0 40px rgba(212,175,55,.20));
-  }
-  to{
-    filter:
-      drop-shadow(0 0 40px rgba(212,175,55,.60))
-      drop-shadow(0 0 80px rgba(212,175,55,.35));
-  }
-}
-<style>
+  <style>
     :root{
       --bg:#050505;
       --panel:#0f0f0f;
@@ -60,6 +19,7 @@
       --shadow:0 20px 70px rgba(0,0,0,.55);
       --r:18px;
     }
+
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{
@@ -71,6 +31,50 @@
     }
     a{color:inherit}
     .wrap{max-width:1180px; margin:0 auto; padding:0 18px}
+
+    /* ✅ IMPORTANT: mobile nav should be hidden by default */
+    .mobile{display:none;}
+
+    /* =========================
+       ULTRA PREMIUM HERO LOGO
+    ========================= */
+    .heroBigLogo{
+      text-align:center;
+      margin-bottom:30px;
+      animation: logoEntrance 1.4s cubic-bezier(.2,.8,.2,1) forwards;
+      opacity:0;
+      position:relative;
+      z-index:5;
+    }
+
+    .heroBigLogo img{
+      width:100%;
+      max-width:800px;
+      height:auto;
+      filter:
+        drop-shadow(0 0 25px rgba(212,175,55,.45))
+        drop-shadow(0 0 60px rgba(212,175,55,.25));
+      animation: goldPulse 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes logoEntrance{
+      0%{opacity:0; transform:translateY(60px) scale(.9);}
+      60%{opacity:1; transform:translateY(-8px) scale(1.02);}
+      100%{opacity:1; transform:translateY(0) scale(1);}
+    }
+
+    @keyframes goldPulse{
+      from{
+        filter:
+          drop-shadow(0 0 20px rgba(212,175,55,.35))
+          drop-shadow(0 0 40px rgba(212,175,55,.20));
+      }
+      to{
+        filter:
+          drop-shadow(0 0 40px rgba(212,175,55,.60))
+          drop-shadow(0 0 80px rgba(212,175,55,.35));
+      }
+    }
 
     /* NAV */
     .nav{
@@ -106,6 +110,7 @@
     }
     .cta:hover{transform: translateY(-1px); filter:brightness(1.03)}
     .menuBtn{display:none}
+
     @media (max-width: 900px){
       .links{display:none}
       .menuBtn{
@@ -125,7 +130,7 @@
       .mobile .cta{width:100%; justify-content:center; margin-top:10px}
     }
 
-    /* HERO (₹1 Crore look) */
+    /* HERO */
     .heroShell{
       position:relative;
       min-height: 78vh;
@@ -147,6 +152,7 @@
         radial-gradient(1200px 550px at 18% 20%, rgba(212,175,55,.30), transparent 55%),
         radial-gradient(900px 600px at 80% 35%, rgba(212,175,55,.14), transparent 60%),
         linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.92));
+      z-index:2;
     }
     .heroNoise{
       position:absolute; inset:0;
@@ -154,11 +160,13 @@
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E");
       mix-blend-mode: overlay;
       pointer-events:none;
+      z-index:3;
     }
     .heroContent{
       position:relative;
       width:100%;
       padding: 54px 0 34px;
+      z-index:4;
     }
     .heroGrid{
       display:grid;
@@ -166,7 +174,10 @@
       gap:18px;
       align-items:stretch;
     }
-    @media (max-width: 980px){ .heroShell{min-height:auto} .heroGrid{grid-template-columns:1fr} }
+    @media (max-width: 980px){
+      .heroShell{min-height:auto}
+      .heroGrid{grid-template-columns:1fr}
+    }
 
     .glass{
       background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
@@ -176,6 +187,7 @@
       padding:26px;
       position:relative;
       overflow:hidden;
+      animation: cinFade 1.2s ease both;
     }
     .glass:before{
       content:"";
@@ -184,6 +196,11 @@
       opacity:.40;
       pointer-events:none;
     }
+    @keyframes cinFade{
+      from{opacity:0; transform:translateY(22px);}
+      to{opacity:1; transform:translateY(0);}
+    }
+
     .tag{
       display:inline-flex; align-items:center; gap:10px;
       padding:8px 12px;
@@ -347,7 +364,7 @@
     .person .name{margin-top:4px; font-size:14px; color:var(--muted)}
     .person .desc{margin-top:8px; font-size:13px; color:var(--muted); line-height:1.6}
 
-    /* Gallery (REAL IMAGES) */
+    /* Gallery */
     .gallery{
       display:grid;
       grid-template-columns: repeat(4, minmax(0,1fr));
@@ -468,37 +485,19 @@
     .wa small{font-weight:900}
 
     /* Reveal */
-.reveal{opacity:0; transform: translateY(16px); transition: opacity .8s ease, transform .8s ease}
-.reveal.show{opacity:1; transform:none}
+    .reveal{opacity:0; transform: translateY(16px); transition: opacity .8s ease, transform .8s ease}
+    .reveal.show{opacity:1; transform:none}
 
-/* GOLD PARTICLES CANVAS */
-#goldParticles{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  z-index:1;
-  pointer-events:none;
-  opacity:.9;
-}
-
-/* Keep overlay above particles */
-.heroOverlay{ z-index:2; }
-.heroNoise{ z-index:3; }
-
-/* Keep content above everything */
-.heroContent{ z-index:4; position:relative; }
-
-/* CINEMATIC ANIMATIONS */
-.glass{
-  animation: cinFade 1.2s ease both;
-}
-
-@keyframes cinFade{
-  from{opacity:0; transform:translateY(22px);}
-  to{opacity:1; transform:translateY(0);}
-}
-
+    /* GOLD PARTICLES CANVAS */
+    #goldParticles{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      z-index:1;
+      pointer-events:none;
+      opacity:.9;
+    }
   </style>
 </head>
 
@@ -540,24 +539,30 @@
   <!-- HERO VIDEO -->
   <section id="top" class="heroShell">
     <canvas id="goldParticles"></canvas>
+
     <video class="heroVideo" autoplay muted loop playsinline>
       <source src="hero.mp4" type="video/mp4">
     </video>
+
     <div class="heroOverlay"></div>
     <div class="heroNoise"></div>
 
     <div class="wrap heroContent">
       <div class="heroGrid">
         <div class="glass reveal">
-        <!-- BIG CINEMATIC LOGO -->
-<div class="heroBigLogo">
-  <img src="Kacheri_Final_White_Text_Transparent.png" alt="Kacheri Business Solutions Logo">
-</div>
+
+          <!-- BIG CINEMATIC LOGO -->
+          <div class="heroBigLogo">
+            <img src="Kacheri_Final_White_Text_Transparent.png" alt="Kacheri Business Solutions Logo">
+          </div>
+
           <div class="tag">💎 Premium • Asset-Backed • Monthly Payout</div>
+
           <div class="hTitle">
             Invest in Real Assets.<br>
             Earn <span class="gold">₹12,000/Month</span>
           </div>
+
           <p class="hSub">
             We install photocopier machines at corporate offices and collect monthly rental.
             Investors receive structured monthly payouts with a defined end option at 5 years.
@@ -680,40 +685,34 @@
   </div>
 
   <!-- GALLERY -->
-<div id="gallery" class="wrap section">
-  <div class="reveal">
+  <div id="gallery" class="wrap section">
+    <div class="reveal">
+      <h2 class="sTitle">Machine Gallery (Real Photos)</h2>
+      <p class="sSub">Upload your real machine photos in <b>images/gallery/</b>. Click to view full screen.</p>
 
-    <h2 class="sTitle">Machine Gallery (Real Photos)</h2>
-    <p class="sSub">Upload your real machine photos in <b>images/gallery/</b>. Click to view full screen.</p>
+      <div class="gallery">
+        <div class="photo" data-src="images/gallery/Machine_1.png">
+          <img src="images/gallery/Machine_1.png" alt="Machine 1">
+          <div class="cap">Photocopier Machine 1 <span>View</span></div>
+        </div>
 
-    <div class="gallery">
+        <div class="photo" data-src="images/gallery/Machine_2.png">
+          <img src="images/gallery/Machine_2.png" alt="Machine 2">
+          <div class="cap">Photocopier Machine 2 <span>View</span></div>
+        </div>
 
-      <div class="photo" data-src="images/gallery/Machine_1.png">
-        <img src="images/gallery/Machine_1.png" alt="Machine 1">
-        <div class="cap">Photocopier Machine 1 <span>View</span></div>
+        <div class="photo" data-src="images/gallery/Machine_3.png">
+          <img src="images/gallery/Machine_3.png" alt="Machine 3">
+          <div class="cap">Photocopier Machine 3 <span>View</span></div>
+        </div>
+
+        <div class="photo" data-src="images/gallery/Machine_4.png">
+          <img src="images/gallery/Machine_4.png" alt="Machine 4">
+          <div class="cap">Photocopier Machine 4 <span>View</span></div>
+        </div>
       </div>
-
-      <div class="photo" data-src="images/gallery/Machine_2.png">
-        <img src="images/gallery/Machine_2.png" alt="Machine 2">
-        <div class="cap">Photocopier Machine 2 <span>View</span></div>
-      </div>
-
-      <div class="photo" data-src="images/gallery/Machine_3.png">
-        <img src="images/gallery/Machine_3.png" alt="Machine 3">
-        <div class="cap">Photocopier Machine 3 <span>View</span></div>
-      </div>
-
-      <div class="photo" data-src="images/gallery/Machine_4.png">
-        <img src="images/gallery/Machine_4.png" alt="Machine 4">
-        <div class="cap">Photocopier Machine 4 <span>View</span></div>
-      </div>
-
     </div>
-
   </div>
-</div>
-
-
 
   <!-- TEAM -->
   <div id="team" class="wrap section">
@@ -729,15 +728,11 @@
             <div class="name">Kacheri Mansoor Ahamed</div>
             <div class="desc">Investor relations, corporate partnerships, and growth strategy.</div>
             <div class="desc">
-              📞 <a href="tel:+918247892087" style="color:var(--gold); font-weight:900; text-decoration:none;">
-                +91 82478 92087
-              </a>
+              📞 <a href="tel:+918247892087" style="color:var(--gold); font-weight:900; text-decoration:none;">+91 82478 92087</a>
               &nbsp; • &nbsp;
               💬 <a href="https://wa.me/918247892087?text=Hi%20Kacheri%20Business%20Solutions,%20I%20want%20details%20about%20the%20Investor%20Rental%20Plan."
                  target="_blank" rel="noopener"
-                 style="color:var(--gold); font-weight:900; text-decoration:none;">
-                WhatsApp
-              </a>
+                 style="color:var(--gold); font-weight:900; text-decoration:none;">WhatsApp</a>
             </div>
           </div>
         </div>
@@ -749,20 +744,15 @@
             <div class="name">Kacheri Inayath Ali</div>
             <div class="desc">Installations, maintenance, service support and monthly collections.</div>
             <div class="desc">
-              📞 <a href="tel:+916300896212" style="color:var(--gold); font-weight:900; text-decoration:none;">
-                +91 63008 96212
-              </a>
+              📞 <a href="tel:+916300896212" style="color:var(--gold); font-weight:900; text-decoration:none;">+91 63008 96212</a>
               &nbsp; • &nbsp;
               💬 <a href="https://wa.me/916300896212?text=Hi%20Kacheri%20Business%20Solutions,%20I%20want%20details%20about%20photocopier%20machine%20rentals%20and%20service."
                  target="_blank" rel="noopener"
-                 style="color:var(--gold); font-weight:900; text-decoration:none;">
-                WhatsApp
-              </a>
+                 style="color:var(--gold); font-weight:900; text-decoration:none;">WhatsApp</a>
             </div>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 
@@ -796,10 +786,8 @@
             Faster response via WhatsApp or phone call.
           </p>
           <a class="cta" style="width:100%; justify-content:center" href="tel:+918247892087">📞 Call CEO</a>
-          <a class="btn2" style="width:100%; justify-content:center; margin-top:10px"
-             href="tel:+916300896212">📞 Call Ops</a>
-          <a class="btn2" style="width:100%; justify-content:center; margin-top:10px"
-             href="mailto:info@kacheribusinesssolutions.com">✉️ Email Us</a>
+          <a class="btn2" style="width:100%; justify-content:center; margin-top:10px" href="tel:+916300896212">📞 Call Ops</a>
+          <a class="btn2" style="width:100%; justify-content:center; margin-top:10px" href="mailto:info@kacheribusinesssolutions.com">✉️ Email Us</a>
         </div>
       </div>
     </div>
