@@ -427,8 +427,37 @@
     .wa small{font-weight:900}
 
     /* Reveal */
-    .reveal{opacity:0; transform: translateY(16px); transition: opacity .8s ease, transform .8s ease}
-    .reveal.show{opacity:1; transform:none}
+.reveal{opacity:0; transform: translateY(16px); transition: opacity .8s ease, transform .8s ease}
+.reveal.show{opacity:1; transform:none}
+
+/* GOLD PARTICLES CANVAS */
+#goldParticles{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  z-index:1;
+  pointer-events:none;
+  opacity:.9;
+}
+
+/* Keep overlay above particles */
+.heroOverlay{ z-index:2; }
+.heroNoise{ z-index:3; }
+
+/* Keep content above everything */
+.heroContent{ z-index:4; position:relative; }
+
+/* CINEMATIC ANIMATIONS */
+.glass{
+  animation: cinFade 1.2s ease both;
+}
+
+@keyframes cinFade{
+  from{opacity:0; transform:translateY(22px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
   </style>
 </head>
 
