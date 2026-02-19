@@ -4,19 +4,19 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Kacheri Business Solutions</title>
-  <meta name="description" content="Kacheri Business Solutions - Photocopier Rental & Asset-backed Investor Model" />
+  <meta name="description" content="Kacheri Business Solutions — Premium Photocopier Rentals & Asset-Backed Investor Model" />
 
   <style>
     :root{
-      --bg:#050505;
-      --panel:#0f0f0f;
-      --panel2:#121212;
-      --text:#f4f4f4;
-      --muted:#b9b9b9;
+      --bg:#040404;
+      --panel:#0c0c0c;
+      --panel2:#101010;
+      --text:#f5f5f5;
+      --muted:#bdbdbd;
       --gold:#d4af37;
       --gold2:#b8962e;
       --line:rgba(212,175,55,.18);
-      --shadow:0 20px 70px rgba(0,0,0,.55);
+      --shadow:0 22px 80px rgba(0,0,0,.62);
       --r:18px;
     }
 
@@ -25,74 +25,59 @@
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
-      background: var(--bg);
+      background:var(--bg);
       color:var(--text);
       overflow-x:hidden;
     }
     a{color:inherit}
     .wrap{max-width:1180px; margin:0 auto; padding:0 18px}
-
-    /* ✅ IMPORTANT: mobile nav should be hidden by default */
     .mobile{display:none;}
 
     /* =========================
-       ULTRA PREMIUM HERO LOGO
+       BILLIONAIRE TEXT GLOW
     ========================= */
-    .heroBigLogo{
-      text-align:center;
-      margin-bottom:30px;
-      animation: logoEntrance 1.4s cubic-bezier(.2,.8,.2,1) forwards;
-      opacity:0;
-      position:relative;
-      z-index:5;
+    @keyframes glowSoft{
+      0%{ text-shadow: 0 0 0 rgba(212,175,55,0), 0 0 10px rgba(212,175,55,.06); }
+      100%{ text-shadow: 0 0 14px rgba(212,175,55,.14), 0 0 34px rgba(212,175,55,.08); }
+    }
+    @keyframes glowTitle{
+      0%{ text-shadow: 0 0 18px rgba(212,175,55,.10), 0 0 40px rgba(212,175,55,.06); }
+      100%{ text-shadow: 0 0 30px rgba(212,175,55,.18), 0 0 75px rgba(212,175,55,.10); }
     }
 
-    .heroBigLogo img{
-      width:100%;
-      max-width:800px;
-      height:auto;
-      filter:
-        drop-shadow(0 0 25px rgba(212,175,55,.45))
-        drop-shadow(0 0 60px rgba(212,175,55,.25));
-      animation: goldPulse 3s ease-in-out infinite alternate;
+    /* Apply subtle glow to all text but keep it elegant */
+    body{ animation: glowSoft 4.6s ease-in-out infinite alternate; }
+    body *{ text-shadow: 0 0 0 rgba(0,0,0,0); }
+    .hTitle, .sTitle, .tag, .stat .v, .kv .v, .card h4, .role{
+      animation: glowTitle 3.6s ease-in-out infinite alternate;
+    }
+    a:hover{
+      text-shadow: 0 0 16px rgba(212,175,55,.18), 0 0 34px rgba(212,175,55,.10);
     }
 
-    @keyframes logoEntrance{
-      0%{opacity:0; transform:translateY(60px) scale(.9);}
-      60%{opacity:1; transform:translateY(-8px) scale(1.02);}
-      100%{opacity:1; transform:translateY(0) scale(1);}
+    @media (prefers-reduced-motion: reduce){
+      *{animation:none !important; transition:none !important;}
     }
 
-    @keyframes goldPulse{
-      from{
-        filter:
-          drop-shadow(0 0 20px rgba(212,175,55,.35))
-          drop-shadow(0 0 40px rgba(212,175,55,.20));
-      }
-      to{
-        filter:
-          drop-shadow(0 0 40px rgba(212,175,55,.60))
-          drop-shadow(0 0 80px rgba(212,175,55,.35));
-      }
-    }
-
-    /* NAV */
+    /* =========================
+       NAV
+    ========================= */
     .nav{
-      position:sticky; top:0; z-index:50;
-      backdrop-filter: blur(12px);
-      background: rgba(5,5,5,.60);
+      position:sticky; top:0; z-index:60;
+      backdrop-filter: blur(14px);
+      background: rgba(4,4,4,.62);
       border-bottom:1px solid rgba(255,255,255,.06);
     }
     .navin{display:flex; align-items:center; justify-content:space-between; padding:14px 0;}
     .brand{display:flex; align-items:center; gap:12px; text-decoration:none}
     .brand img{width:44px; height:44px; object-fit:contain}
     .brandtext{display:flex; flex-direction:column; line-height:1.1}
-    .brandtext .t1{font-weight:900; letter-spacing:.4px}
+    .brandtext .t1{font-weight:1000; letter-spacing:.4px}
     .brandtext .t2{font-size:12px; color:var(--muted); margin-top:2px}
-    .links{display:flex; gap:18px; align-items:center}
+    .links{display:flex; gap:16px; align-items:center}
     .links a{
-      text-decoration:none; font-size:14px; color:var(--muted);
-      padding:8px 10px; border-radius:10px;
+      text-decoration:none; font-size:14px; color:rgba(255,255,255,.78);
+      padding:8px 10px; border-radius:12px;
       transition:.2s ease;
       white-space:nowrap;
     }
@@ -100,40 +85,48 @@
     .cta{
       display:inline-flex; align-items:center; gap:10px;
       background: linear-gradient(135deg, var(--gold), var(--gold2));
-      color:#000; font-weight:900; text-decoration:none;
-      padding:10px 14px; border-radius:12px;
-      box-shadow: 0 12px 30px rgba(212,175,55,.15);
+      color:#000; font-weight:1000; text-decoration:none;
+      padding:10px 14px; border-radius:14px;
+      box-shadow: 0 16px 50px rgba(212,175,55,.15);
       border:1px solid rgba(212,175,55,.35);
-      transition: transform .15s ease, filter .2s ease;
+      transition: transform .18s ease, filter .2s ease, box-shadow .2s ease;
       font-size:14px;
       white-space:nowrap;
     }
-    .cta:hover{transform: translateY(-1px); filter:brightness(1.03)}
+    .cta:hover{
+      transform: translateY(-2px);
+      filter:brightness(1.05) saturate(1.05);
+      box-shadow:
+        0 22px 70px rgba(0,0,0,.55),
+        0 0 26px rgba(212,175,55,.18),
+        0 0 60px rgba(212,175,55,.10);
+    }
     .menuBtn{display:none}
-
     @media (max-width: 900px){
       .links{display:none}
       .menuBtn{
         display:inline-flex; align-items:center; gap:10px;
-        padding:10px 12px; border-radius:12px;
-        border:1px solid rgba(255,255,255,.10);
-        background: rgba(255,255,255,.04);
+        padding:10px 12px; border-radius:14px;
+        border:1px solid rgba(255,255,255,.12);
+        background: rgba(255,255,255,.05);
         color:var(--text); cursor:pointer;
       }
       .mobile{display:none; padding: 0 0 14px 0;}
       .mobile a{
         display:block; text-decoration:none;
-        padding:12px 10px; border-radius:12px;
-        color:var(--muted);
+        padding:12px 10px; border-radius:14px;
+        color:rgba(255,255,255,.78);
       }
       .mobile a:hover{background:rgba(255,255,255,.06); color:var(--text)}
       .mobile .cta{width:100%; justify-content:center; margin-top:10px}
     }
 
-    /* HERO */
+    /* =========================
+       HERO (BILLIONAIRE)
+    ========================= */
     .heroShell{
       position:relative;
-      min-height: 78vh;
+      min-height: 82vh;
       display:flex;
       align-items:stretch;
       overflow:hidden;
@@ -143,29 +136,36 @@
       position:absolute; inset:0;
       width:100%; height:100%;
       object-fit:cover;
-      filter: contrast(1.05) saturate(1.05) brightness(.75);
-      transform: scale(1.03);
+      filter: contrast(1.08) saturate(1.10) brightness(.72);
+      transform: scale(1.04);
     }
     .heroOverlay{
       position:absolute; inset:0;
       background:
-        radial-gradient(1200px 550px at 18% 20%, rgba(212,175,55,.30), transparent 55%),
-        radial-gradient(900px 600px at 80% 35%, rgba(212,175,55,.14), transparent 60%),
-        linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.92));
+        radial-gradient(1200px 550px at 15% 20%, rgba(212,175,55,.34), transparent 55%),
+        radial-gradient(900px 600px at 85% 30%, rgba(212,175,55,.16), transparent 60%),
+        linear-gradient(180deg, rgba(0,0,0,.28), rgba(0,0,0,.94));
       z-index:2;
     }
     .heroNoise{
       position:absolute; inset:0;
-      opacity:.09;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E");
+      opacity:.10;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E");
       mix-blend-mode: overlay;
       pointer-events:none;
       z-index:3;
     }
+    #goldParticles{
+      position:absolute; inset:0;
+      width:100%; height:100%;
+      z-index:1;
+      pointer-events:none;
+      opacity:.95;
+    }
     .heroContent{
       position:relative;
       width:100%;
-      padding: 54px 0 34px;
+      padding: 56px 0 34px;
       z-index:4;
     }
     .heroGrid{
@@ -174,41 +174,85 @@
       gap:18px;
       align-items:stretch;
     }
-    @media (max-width: 980px){
-      .heroShell{min-height:auto}
-      .heroGrid{grid-template-columns:1fr}
-    }
+    @media (max-width: 980px){ .heroShell{min-height:auto} .heroGrid{grid-template-columns:1fr} }
 
     .glass{
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
       border:1px solid rgba(255,255,255,.10);
-      border-radius: calc(var(--r) + 10px);
+      border-radius: calc(var(--r) + 12px);
       box-shadow: var(--shadow);
       padding:26px;
       position:relative;
       overflow:hidden;
+      transform: translateY(0);
       animation: cinFade 1.2s ease both;
     }
     .glass:before{
       content:"";
       position:absolute; inset:-2px;
-      background: linear-gradient(135deg, rgba(212,175,55,.22), transparent 38%, rgba(212,175,55,.12));
-      opacity:.40;
+      background:
+        linear-gradient(135deg, rgba(212,175,55,.26), transparent 38%, rgba(212,175,55,.14));
+      opacity:.42;
       pointer-events:none;
+    }
+    .glass:after{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        radial-gradient(900px 360px at 30% 10%, rgba(212,175,55,.18), transparent 60%);
+      opacity:.35;
+      pointer-events:none;
+      mix-blend-mode: screen;
     }
     @keyframes cinFade{
       from{opacity:0; transform:translateY(22px);}
       to{opacity:1; transform:translateY(0);}
     }
 
+    /* BIG CINEMATIC LOGO */
+    .heroBigLogo{
+      text-align:center;
+      margin-bottom:18px;
+      animation: logoEntrance 1.4s cubic-bezier(.2,.8,.2,1) forwards;
+      opacity:0;
+      position:relative;
+      z-index:5;
+    }
+    .heroBigLogo img{
+      width:100%;
+      max-width:820px;
+      height:auto;
+      filter:
+        drop-shadow(0 0 25px rgba(212,175,55,.42))
+        drop-shadow(0 0 70px rgba(212,175,55,.20));
+      animation: goldPulse 3.4s ease-in-out infinite alternate;
+    }
+    @keyframes logoEntrance{
+      0%{opacity:0; transform:translateY(60px) scale(.92);}
+      60%{opacity:1; transform:translateY(-8px) scale(1.02);}
+      100%{opacity:1; transform:translateY(0) scale(1);}
+    }
+    @keyframes goldPulse{
+      from{
+        filter:
+          drop-shadow(0 0 18px rgba(212,175,55,.30))
+          drop-shadow(0 0 44px rgba(212,175,55,.16));
+      }
+      to{
+        filter:
+          drop-shadow(0 0 40px rgba(212,175,55,.55))
+          drop-shadow(0 0 95px rgba(212,175,55,.28));
+      }
+    }
+
     .tag{
       display:inline-flex; align-items:center; gap:10px;
       padding:8px 12px;
       border-radius:999px;
-      border:1px solid rgba(212,175,55,.32);
-      background: rgba(212,175,55,.10);
+      border:1px solid rgba(212,175,55,.34);
+      background: rgba(212,175,55,.11);
       color: var(--gold);
-      font-weight:900;
+      font-weight:1000;
       font-size:12px;
       position:relative;
       z-index:1;
@@ -216,7 +260,7 @@
     }
     .hTitle{
       margin:14px 0 10px;
-      font-size:48px;
+      font-size:50px;
       letter-spacing:-1px;
       line-height:1.03;
       position:relative;
@@ -225,7 +269,7 @@
     .hTitle .gold{color:var(--gold)}
     .hSub{
       margin:0;
-      color:rgba(255,255,255,.78);
+      color:rgba(255,255,255,.80);
       font-size:16px;
       line-height:1.75;
       max-width:64ch;
@@ -235,15 +279,19 @@
     .heroBtns{display:flex; gap:12px; flex-wrap:wrap; margin-top:18px; position:relative; z-index:1}
     .btn2{
       display:inline-flex; align-items:center; gap:10px;
-      padding:10px 14px; border-radius:12px;
+      padding:10px 14px; border-radius:14px;
       border:1px solid rgba(255,255,255,.18);
       background: rgba(0,0,0,.25);
       color:var(--text); text-decoration:none;
       transition:.2s ease;
-      font-weight:800;
+      font-weight:900;
       font-size:14px;
     }
-    .btn2:hover{background: rgba(255,255,255,.08); transform: translateY(-1px)}
+    .btn2:hover{
+      background: rgba(255,255,255,.08);
+      transform: translateY(-2px);
+      box-shadow: 0 0 22px rgba(255,255,255,.06);
+    }
 
     .stats{
       display:grid;
@@ -254,28 +302,31 @@
     }
     @media (max-width: 520px){ .stats{grid-template-columns:1fr} }
     .stat{
-      background: rgba(0,0,0,.28);
+      background: rgba(0,0,0,.30);
       border:1px solid rgba(255,255,255,.10);
-      border-radius:14px;
+      border-radius:16px;
       padding:14px;
     }
-    .stat .v{font-size:22px; font-weight:1000; color:var(--gold)}
+    .stat .v{font-size:22px; font-weight:1100; color:var(--gold)}
     .stat .l{font-size:12px; color:rgba(255,255,255,.72); margin-top:4px; line-height:1.4}
 
-    /* Calculator */
+    /* =========================
+       Calculator
+    ========================= */
     .calc{
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
       border:1px solid rgba(255,255,255,.10);
-      border-radius: calc(var(--r) + 10px);
+      border-radius: calc(var(--r) + 12px);
       box-shadow: var(--shadow);
       padding:22px;
       position:relative;
       overflow:hidden;
+      animation: cinFade 1.2s ease both;
     }
     .calc:before{
       content:"";
       position:absolute; inset:-2px;
-      background: radial-gradient(700px 300px at 60% 10%, rgba(212,175,55,.22), transparent 60%);
+      background: radial-gradient(700px 300px at 60% 10%, rgba(212,175,55,.24), transparent 60%);
       opacity:.35;
       pointer-events:none;
     }
@@ -287,48 +338,50 @@
     input{
       width:100%;
       padding:12px 12px;
-      border-radius:12px;
+      border-radius:14px;
       border:1px solid rgba(255,255,255,.14);
-      background: rgba(0,0,0,.28);
+      background: rgba(0,0,0,.30);
       color:var(--text);
       outline:none;
     }
-    input:focus{border-color: rgba(212,175,55,.50); box-shadow: 0 0 0 4px rgba(212,175,55,.12)}
+    input:focus{border-color: rgba(212,175,55,.55); box-shadow: 0 0 0 4px rgba(212,175,55,.12)}
     .result{
       margin-top:14px;
       padding:14px;
-      border-radius:14px;
-      border:1px solid rgba(212,175,55,.24);
-      background: rgba(212,175,55,.09);
+      border-radius:16px;
+      border:1px solid rgba(212,175,55,.26);
+      background: rgba(212,175,55,.10);
       position:relative; z-index:1;
     }
-    .result .big{font-size:22px; font-weight:1000; color:var(--gold)}
+    .result .big{font-size:22px; font-weight:1100; color:var(--gold)}
     .result .small{font-size:12px; color:rgba(255,255,255,.72); margin-top:6px; line-height:1.5}
 
-    /* Sections */
-    .section{padding:44px 0}
-    .sTitle{font-size:28px; margin:0 0 10px}
-    .sSub{margin:0 0 16px; color:var(--muted); line-height:1.75}
+    /* =========================
+       Sections
+    ========================= */
+    .section{padding:48px 0}
+    .sTitle{font-size:30px; margin:0 0 10px}
+    .sSub{margin:0 0 16px; color:rgba(255,255,255,.72); line-height:1.75}
     .cards{
       display:grid; grid-template-columns: repeat(3, minmax(0,1fr));
       gap:14px;
     }
     @media (max-width: 980px){ .cards{grid-template-columns:1fr} }
     .card{
-      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)), var(--panel);
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02)), var(--panel);
       border:1px solid rgba(255,255,255,.07);
       border-radius: var(--r);
       padding:18px;
-      box-shadow: 0 18px 50px rgba(0,0,0,.42);
+      box-shadow: 0 18px 55px rgba(0,0,0,.46);
     }
-    .card h4{margin:0 0 8px; color:var(--gold)}
-    .card p{margin:0; color:var(--muted); line-height:1.65; font-size:14px}
+    .card h4{margin:0 0 8px; color:var(--gold); font-weight:1100}
+    .card p{margin:0; color:rgba(255,255,255,.70); line-height:1.65; font-size:14px}
 
     .planBox{
       margin-top:14px;
       border-radius: var(--r);
       border:1px solid var(--line);
-      background: linear-gradient(180deg, rgba(212,175,55,.10), rgba(255,255,255,.02));
+      background: linear-gradient(180deg, rgba(212,175,55,.11), rgba(255,255,255,.02));
       padding:18px;
     }
     .planGrid{
@@ -336,11 +389,13 @@
       gap:14px;
     }
     @media (max-width: 820px){ .planGrid{grid-template-columns:1fr} }
-    .kv{padding:12px; border-radius:14px; border:1px solid rgba(255,255,255,.08); background: rgba(0,0,0,.20)}
-    .kv .k{font-size:12px; color:var(--muted)}
-    .kv .v{font-size:20px; font-weight:1000; color:var(--gold); margin-top:6px}
+    .kv{padding:12px; border-radius:16px; border:1px solid rgba(255,255,255,.08); background: rgba(0,0,0,.22)}
+    .kv .k{font-size:12px; color:rgba(255,255,255,.70)}
+    .kv .v{font-size:20px; font-weight:1100; color:var(--gold); margin-top:6px}
 
-    /* Team */
+    /* =========================
+       Team
+    ========================= */
     .team{
       display:grid; grid-template-columns: repeat(2, minmax(0,1fr));
       gap:14px;
@@ -348,11 +403,11 @@
     @media (max-width: 880px){ .team{grid-template-columns:1fr} }
     .person{
       display:flex; gap:14px; align-items:center;
-      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)), var(--panel);
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02)), var(--panel);
       border:1px solid rgba(255,255,255,.07);
       border-radius: var(--r);
       padding:16px;
-      box-shadow: 0 18px 50px rgba(0,0,0,.42);
+      box-shadow: 0 18px 55px rgba(0,0,0,.46);
     }
     .person img{
       width:96px; height:96px; border-radius:16px; object-fit:cover;
@@ -360,11 +415,13 @@
       box-shadow: 0 10px 30px rgba(0,0,0,.45);
       background:#000;
     }
-    .person .role{color:var(--gold); font-weight:1000}
-    .person .name{margin-top:4px; font-size:14px; color:var(--muted)}
-    .person .desc{margin-top:8px; font-size:13px; color:var(--muted); line-height:1.6}
+    .person .role{color:var(--gold); font-weight:1100}
+    .person .name{margin-top:4px; font-size:14px; color:rgba(255,255,255,.72)}
+    .person .desc{margin-top:8px; font-size:13px; color:rgba(255,255,255,.70); line-height:1.6}
 
-    /* Gallery */
+    /* =========================
+       Gallery
+    ========================= */
     .gallery{
       display:grid;
       grid-template-columns: repeat(4, minmax(0,1fr));
@@ -379,7 +436,7 @@
       border:1px solid rgba(255,255,255,.08);
       background: rgba(255,255,255,.03);
       aspect-ratio: 4 / 3;
-      box-shadow: 0 18px 50px rgba(0,0,0,.42);
+      box-shadow: 0 18px 55px rgba(0,0,0,.46);
       cursor:pointer;
     }
     .photo img{
@@ -387,20 +444,23 @@
       object-fit:cover;
       transform: scale(1.02);
       transition: transform .35s ease, filter .35s ease;
-      filter: saturate(1.05) contrast(1.02);
+      filter: saturate(1.08) contrast(1.04);
       display:block;
     }
-    .photo:hover img{ transform: scale(1.08); filter: saturate(1.15) contrast(1.06); }
+    .photo:hover img{
+      transform: scale(1.10);
+      filter: saturate(1.22) contrast(1.08);
+    }
     .photo:after{
       content:"";
       position:absolute; inset:0;
-      background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,.78));
-      opacity:.9;
+      background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,.84));
+      opacity:.95;
       pointer-events:none;
     }
     .cap{
       position:absolute; left:12px; right:12px; bottom:12px;
-      font-weight:900;
+      font-weight:1000;
       font-size:13px;
       color:rgba(255,255,255,.92);
       display:flex; justify-content:space-between; align-items:center;
@@ -410,13 +470,13 @@
     .cap span{
       color:rgba(212,175,55,.95);
       font-size:12px;
-      font-weight:1000;
+      font-weight:1100;
     }
 
     /* Lightbox */
     .lightbox{
       position:fixed; inset:0; z-index:999;
-      background: rgba(0,0,0,.86);
+      background: rgba(0,0,0,.88);
       display:none;
       align-items:center;
       justify-content:center;
@@ -437,12 +497,12 @@
     .lbClose{
       position:absolute; top:10px; right:10px;
       padding:10px 12px;
-      border-radius: 12px;
+      border-radius: 14px;
       border:1px solid rgba(255,255,255,.14);
       background: rgba(0,0,0,.45);
       color:#fff;
       cursor:pointer;
-      font-weight:1000;
+      font-weight:1100;
     }
 
     /* Contact */
@@ -452,52 +512,85 @@
       align-items:stretch;
     }
     @media (max-width: 980px){ .contact{grid-template-columns:1fr} }
-    .infoLine{margin:10px 0; color:var(--muted); line-height:1.7}
+    .infoLine{margin:10px 0; color:rgba(255,255,255,.72); line-height:1.7}
     .pill{
       display:inline-flex; align-items:center; gap:10px;
-      padding:10px 12px; border-radius:14px;
+      padding:10px 12px; border-radius:16px;
       border:1px solid rgba(255,255,255,.10);
       background: rgba(255,255,255,.04);
       text-decoration:none;
       margin-top:10px;
-      font-weight:900;
+      font-weight:1000;
+      transition:.2s ease;
+    }
+    .pill:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 0 24px rgba(255,255,255,.06);
     }
 
     footer{
-      padding:24px 0 80px;
+      padding:24px 0 96px;
       color:rgba(255,255,255,.55);
       border-top:1px solid rgba(255,255,255,.06);
       margin-top:20px;
     }
 
-    /* WhatsApp */
+    /* WhatsApp floating */
     .wa{
-      position:fixed; right:18px; bottom:18px; z-index:80;
+      position:fixed; right:18px; bottom:18px; z-index:90;
       display:flex; align-items:center; gap:10px;
       padding:12px 14px; border-radius:999px;
       background: linear-gradient(135deg, var(--gold), var(--gold2));
-      color:#000; text-decoration:none; font-weight:1000;
-      box-shadow: 0 18px 50px rgba(0,0,0,.45);
+      color:#000; text-decoration:none; font-weight:1100;
+      box-shadow: 0 18px 55px rgba(0,0,0,.48);
       border:1px solid rgba(212,175,55,.35);
-      transition: transform .15s ease;
+      transition: transform .18s ease, box-shadow .2s ease, filter .2s ease;
     }
-    .wa:hover{transform: translateY(-2px)}
-    .wa small{font-weight:900}
+    .wa:hover{
+      transform: translateY(-3px);
+      filter: brightness(1.05);
+      box-shadow:
+        0 22px 70px rgba(0,0,0,.55),
+        0 0 22px rgba(212,175,55,.18),
+        0 0 50px rgba(212,175,55,.10);
+    }
+    .wa small{font-weight:1100}
+
+    /* Instagram floating */
+    .igFloat{
+      position:fixed;
+      right:18px;
+      bottom:122px; /* above 2 WA buttons */
+      z-index:95;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding:12px 14px;
+      border-radius:999px;
+      background: linear-gradient(135deg,#E1306C,#C13584);
+      color:#fff;
+      text-decoration:none;
+      font-weight:1100;
+      border:1px solid rgba(255,255,255,.18);
+      box-shadow: 0 18px 55px rgba(0,0,0,.48);
+      transition: transform .18s ease, filter .22s ease, box-shadow .22s ease;
+    }
+    .igFloat:hover{
+      transform: translateY(-3px) scale(1.03);
+      filter: brightness(1.06) saturate(1.18);
+      box-shadow:
+        0 22px 70px rgba(0,0,0,.55),
+        0 0 28px rgba(225,48,108,.35),
+        0 0 60px rgba(193,53,132,.25);
+    }
+    .igFloat small{font-weight:1100}
+    @media (max-width: 520px){
+      .igFloat small{display:none;}
+    }
 
     /* Reveal */
-    .reveal{opacity:0; transform: translateY(16px); transition: opacity .8s ease, transform .8s ease}
+    .reveal{opacity:0; transform: translateY(16px); transition: opacity .9s ease, transform .9s ease}
     .reveal.show{opacity:1; transform:none}
-
-    /* GOLD PARTICLES CANVAS */
-    #goldParticles{
-      position:absolute;
-      inset:0;
-      width:100%;
-      height:100%;
-      z-index:1;
-      pointer-events:none;
-      opacity:.9;
-    }
   </style>
 </head>
 
@@ -536,10 +629,11 @@
     </div>
   </div>
 
-  <!-- HERO VIDEO -->
+  <!-- HERO -->
   <section id="top" class="heroShell">
     <canvas id="goldParticles"></canvas>
 
+    <!-- Optional: keep hero.mp4 if you have it. If not, remove the <video> block. -->
     <video class="heroVideo" autoplay muted loop playsinline>
       <source src="hero.mp4" type="video/mp4">
     </video>
@@ -550,13 +644,11 @@
     <div class="wrap heroContent">
       <div class="heroGrid">
         <div class="glass reveal">
-
-          <!-- BIG CINEMATIC LOGO -->
           <div class="heroBigLogo">
             <img src="Kacheri_Final_White_Text_Transparent.png" alt="Kacheri Business Solutions Logo">
           </div>
 
-          <div class="tag">💎 Premium • Asset-Backed • Monthly Payout</div>
+          <div class="tag">💎 Billionaire-Grade • Asset-Backed • Monthly Payout</div>
 
           <div class="hTitle">
             Invest in Real Assets.<br>
@@ -639,7 +731,7 @@
     <div class="card reveal" style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px;">
       <div>
         <h4 style="margin:0; color:var(--gold)">Investor Enquiry / Corporate Rental Enquiry</h4>
-        <p style="margin:6px 0 0; color:var(--muted)">Call or WhatsApp on either number for quick response.</p>
+        <p style="margin:6px 0 0; color:rgba(255,255,255,.70)">Call or WhatsApp on either number for quick response.</p>
       </div>
       <div style="display:flex; gap:10px; flex-wrap:wrap;">
         <a class="cta" href="tel:+918247892087">📞 Call CEO</a>
@@ -695,17 +787,14 @@
           <img src="images/gallery/Machine_1.png" alt="Machine 1">
           <div class="cap">Photocopier Machine 1 <span>View</span></div>
         </div>
-
         <div class="photo" data-src="images/gallery/Machine_2.png">
           <img src="images/gallery/Machine_2.png" alt="Machine 2">
           <div class="cap">Photocopier Machine 2 <span>View</span></div>
         </div>
-
         <div class="photo" data-src="images/gallery/Machine_3.png">
           <img src="images/gallery/Machine_3.png" alt="Machine 3">
           <div class="cap">Photocopier Machine 3 <span>View</span></div>
         </div>
-
         <div class="photo" data-src="images/gallery/Machine_4.png">
           <img src="images/gallery/Machine_4.png" alt="Machine 4">
           <div class="cap">Photocopier Machine 4 <span>View</span></div>
@@ -728,11 +817,11 @@
             <div class="name">Kacheri Mansoor Ahamed</div>
             <div class="desc">Investor relations, corporate partnerships, and growth strategy.</div>
             <div class="desc">
-              📞 <a href="tel:+918247892087" style="color:var(--gold); font-weight:900; text-decoration:none;">+91 82478 92087</a>
+              📞 <a href="tel:+918247892087" style="color:var(--gold); font-weight:1100; text-decoration:none;">+91 82478 92087</a>
               &nbsp; • &nbsp;
               💬 <a href="https://wa.me/918247892087?text=Hi%20Kacheri%20Business%20Solutions,%20I%20want%20details%20about%20the%20Investor%20Rental%20Plan."
                  target="_blank" rel="noopener"
-                 style="color:var(--gold); font-weight:900; text-decoration:none;">WhatsApp</a>
+                 style="color:var(--gold); font-weight:1100; text-decoration:none;">WhatsApp</a>
             </div>
           </div>
         </div>
@@ -744,15 +833,16 @@
             <div class="name">Kacheri Inayath Ali</div>
             <div class="desc">Installations, maintenance, service support and monthly collections.</div>
             <div class="desc">
-              📞 <a href="tel:+916300896212" style="color:var(--gold); font-weight:900; text-decoration:none;">+91 63008 96212</a>
+              📞 <a href="tel:+916300896212" style="color:var(--gold); font-weight:1100; text-decoration:none;">+91 63008 96212</a>
               &nbsp; • &nbsp;
               💬 <a href="https://wa.me/916300896212?text=Hi%20Kacheri%20Business%20Solutions,%20I%20want%20details%20about%20photocopier%20machine%20rentals%20and%20service."
                  target="_blank" rel="noopener"
-                 style="color:var(--gold); font-weight:900; text-decoration:none;">WhatsApp</a>
+                 style="color:var(--gold); font-weight:1100; text-decoration:none;">WhatsApp</a>
             </div>
           </div>
         </div>
       </div>
+
     </div>
   </div>
 
@@ -767,45 +857,61 @@
           <h4 style="margin:0 0 8px; color:var(--gold)">Kacheri Business Solutions</h4>
 
           <div class="infoLine"><b>Enquiry (Call/WhatsApp):</b><br>
-            <a href="tel:+918247892087" style="color:var(--gold); font-weight:900; text-decoration:none;">+91 82478 92087</a>
+            <a href="tel:+918247892087" style="color:var(--gold); font-weight:1100; text-decoration:none;">+91 82478 92087</a>
             &nbsp; | &nbsp;
-            <a href="tel:+916300896212" style="color:var(--gold); font-weight:900; text-decoration:none;">+91 63008 96212</a>
+            <a href="tel:+916300896212" style="color:var(--gold); font-weight:1100; text-decoration:none;">+91 63008 96212</a>
           </div>
 
           <div class="infoLine"><b>Email:</b> info@kacheribusinesssolutions.com</div>
           <div class="infoLine"><b>Address:</b> Housing Board Colony, Opp. Canara Bank, Anantapur, Andhra Pradesh</div>
 
-            <div class="infoLine"><b>Office Location:</b></div>
+          <div class="infoLine"><b>Office Location:</b></div>
 
-<div style="margin-top:10px; border-radius:18px; overflow:hidden; border:1px solid rgba(255,255,255,.10); box-shadow: 0 18px 50px rgba(0,0,0,.35);">
-  <iframe
-    title="Kacheri Business Solutions Location"
-    src="https://www.google.com/maps?q=14.6646477,77.6049536&z=17&output=embed"
-    width="100%"
-    height="300"
-    style="border:0; display:block;"
-    loading="lazy"
-    referrerpolicy="no-referrer-when-downgrade">
-  </iframe>
-</div>
+          <div style="margin-top:10px; border-radius:18px; overflow:hidden; border:1px solid rgba(255,255,255,.10); box-shadow: 0 18px 50px rgba(0,0,0,.35);">
+            <iframe
+              title="Kacheri Business Solutions Location"
+              src="https://www.google.com/maps?q=14.6646477,77.6049536&z=17&output=embed"
+              width="100%"
+              height="300"
+              style="border:0; display:block;"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
 
-<a class="cta" style="margin-top:12px; width:100%; justify-content:center;"
-   target="_blank" rel="noopener"
-   href="https://www.google.com/maps/dir/?api=1&destination=14.6646477,77.6049536">
-  📍 Get Directions on Google Maps
-</a>
+          <a class="cta" style="margin-top:12px; width:100%; justify-content:center;"
+             target="_blank" rel="noopener"
+             href="https://www.google.com/maps/dir/?api=1&destination=14.6646477,77.6049536">
+            📍 Get Directions on Google Maps
+          </a>
 
+          <a class="pill" href="Kacheri_Business_Solutions_Ultra_Premium_Investor_Agreement_Updated.pdf" download>
+            📄 Download Agreement PDF
           </a>
         </div>
 
         <div class="card">
           <h4>Quick Actions</h4>
-          <p style="color:var(--muted); line-height:1.65; margin:0 0 12px">
+          <p style="color:rgba(255,255,255,.70); line-height:1.65; margin:0 0 12px">
             Faster response via WhatsApp or phone call.
           </p>
           <a class="cta" style="width:100%; justify-content:center" href="tel:+918247892087">📞 Call CEO</a>
           <a class="btn2" style="width:100%; justify-content:center; margin-top:10px" href="tel:+916300896212">📞 Call Ops</a>
           <a class="btn2" style="width:100%; justify-content:center; margin-top:10px" href="mailto:info@kacheribusinesssolutions.com">✉️ Email Us</a>
+
+          <!-- Instagram icon button inside Quick Actions -->
+          <a class="btn2"
+             style="width:100%; justify-content:center; margin-top:10px;
+                    background: linear-gradient(135deg,#E1306C,#C13584);
+                    border:none; color:#fff; font-weight:1100;"
+             href="https://www.instagram.com/kacheri.co/"
+             target="_blank" rel="noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                 viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M7.75 2C4.574 2 2 4.574 2 7.75v8.5C2 19.426 4.574 22 7.75 22h8.5C19.426 22 22 19.426 22 16.25v-8.5C22 4.574 19.426 2 16.25 2h-8.5zm0 2h8.5C18.008 4 20 5.992 20 7.75v8.5c0 1.758-1.992 3.75-3.75 3.75h-8.5C5.992 20 4 18.008 4 16.25v-8.5C4 5.992 5.992 4 7.75 4zm8.75 1.5a1 1 0 100 2 1 1 0 000-2zM12 7a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6z"/>
+            </svg>
+            Follow Us on Instagram
+          </a>
         </div>
       </div>
     </div>
@@ -825,17 +931,27 @@
     </div>
   </div>
 
-  <!-- WhatsApp Floating Buttons (2 Numbers) -->
-  <a class="wa" style="bottom:18px;"
-     href="https://wa.me/918247892087?text=Hi%20Kacheri%20Business%20Solutions,%20I%20want%20details%20about%20the%20Investor%20Rental%20Plan."
-     target="_blank" rel="noopener">
-    💬 WhatsApp <small>CEO</small>
+  <!-- Floating Buttons -->
+  <a class="igFloat"
+     href="https://www.instagram.com/kacheri.co/"
+     target="_blank" rel="noopener" aria-label="Instagram">
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+         viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M7.75 2C4.574 2 2 4.574 2 7.75v8.5C2 19.426 4.574 22 7.75 22h8.5C19.426 22 22 19.426 22 16.25v-8.5C22 4.574 19.426 2 16.25 2h-8.5zm0 2h8.5C18.008 4 20 5.992 20 7.75v8.5c0 1.758-1.992 3.75-3.75 3.75h-8.5C5.992 20 4 18.008 4 16.25v-8.5C4 5.992 5.992 4 7.75 4zm8.75 1.5a1 1 0 100 2 1 1 0 000-2zM12 7a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6z"/>
+    </svg>
+    <small>Instagram</small>
   </a>
 
   <a class="wa" style="bottom:70px;"
      href="https://wa.me/916300896212?text=Hi%20Kacheri%20Business%20Solutions,%20I%20want%20details%20about%20photocopier%20machine%20rentals%20and%20service."
      target="_blank" rel="noopener">
     💬 WhatsApp <small>Ops</small>
+  </a>
+
+  <a class="wa" style="bottom:18px;"
+     href="https://wa.me/918247892087?text=Hi%20Kacheri%20Business%20Solutions,%20I%20want%20details%20about%20the%20Investor%20Rental%20Plan."
+     target="_blank" rel="noopener">
+    💬 WhatsApp <small>CEO</small>
   </a>
 
   <script>
@@ -876,7 +992,6 @@
       if (totalReturn) totalReturn.textContent = fmtINR(total);
       if (totalNote) totalNote.textContent = `Estimated profit: ${fmtINR(profit)} • Total months: ${mo}`;
     }
-
     [inv, monthly, months, end].forEach(el => el && el.addEventListener('input', calc));
     calc();
 
@@ -904,10 +1019,98 @@
       if (lightbox) lightbox.classList.remove('show');
       if (lbImg) lbImg.src = "";
     }
-
     if (lbClose) lbClose.addEventListener('click', closeLB);
     if (lightbox) lightbox.addEventListener('click', (e) => { if(e.target === lightbox) closeLB(); });
     document.addEventListener('keydown', (e) => { if(e.key === "Escape") closeLB(); });
+
+    /* =========================
+       BILLIONAIRE GOLD PARTICLES
+    ========================= */
+    const canvas = document.getElementById('goldParticles');
+    const ctx = canvas.getContext('2d', { alpha:true });
+
+    let w = 0, h = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
+    let particles = [];
+    let running = true;
+
+    function resize(){
+      const rect = canvas.getBoundingClientRect();
+      w = Math.max(1, Math.floor(rect.width));
+      h = Math.max(1, Math.floor(rect.height));
+      canvas.width = Math.floor(w * dpr);
+      canvas.height = Math.floor(h * dpr);
+      canvas.style.width = w + 'px';
+      canvas.style.height = h + 'px';
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+      initParticles();
+    }
+
+    function rand(min, max){ return Math.random() * (max - min) + min; }
+
+    function initParticles(){
+      const count = Math.min(120, Math.max(50, Math.floor((w*h) / 14000)));
+      particles = Array.from({length:count}, () => ({
+        x: rand(0, w),
+        y: rand(0, h),
+        r: rand(0.8, 2.4),
+        vx: rand(-0.08, 0.08),
+        vy: rand(-0.22, -0.05),
+        a: rand(0.14, 0.45),
+        tw: rand(0.002, 0.01),
+        phase: rand(0, Math.PI*2)
+      }));
+    }
+
+    function draw(){
+      if (!running) return;
+      ctx.clearRect(0,0,w,h);
+
+      // soft vignette glow
+      const g = ctx.createRadialGradient(w*0.18, h*0.18, 0, w*0.18, h*0.18, Math.max(w,h)*0.9);
+      g.addColorStop(0, 'rgba(212,175,55,0.10)');
+      g.addColorStop(1, 'rgba(212,175,55,0.00)');
+      ctx.fillStyle = g;
+      ctx.fillRect(0,0,w,h);
+
+      for (const p of particles){
+        p.phase += p.tw;
+        const pulse = (Math.sin(p.phase)+1)/2; // 0..1
+        const alpha = p.a * (0.55 + 0.45*pulse);
+
+        ctx.beginPath();
+        ctx.fillStyle = `rgba(212,175,55,${alpha})`;
+        ctx.arc(p.x, p.y, p.r*(0.9+0.35*pulse), 0, Math.PI*2);
+        ctx.fill();
+
+        // tiny sparkle trail
+        ctx.globalAlpha = alpha * 0.55;
+        ctx.fillRect(p.x - 0.5, p.y + 6, 1, 10);
+        ctx.globalAlpha = 1;
+
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if (p.y < -20) { p.y = h + 20; p.x = rand(0, w); }
+        if (p.x < -20) p.x = w + 20;
+        if (p.x > w + 20) p.x = -20;
+      }
+
+      requestAnimationFrame(draw);
+    }
+
+    const hero = document.querySelector('.heroShell');
+    const heroObs = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        running = e.isIntersecting;
+        if (running) requestAnimationFrame(draw);
+      });
+    }, { threshold: 0.02 });
+
+    if (hero) heroObs.observe(hero);
+
+    window.addEventListener('resize', resize, { passive:true });
+    resize();
+    requestAnimationFrame(draw);
   </script>
 
 </body>
